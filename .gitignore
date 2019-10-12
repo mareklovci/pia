@@ -1,5 +1,5 @@
-# Created by https://www.gitignore.io/api/flask,python,pycharm+all
-# Edit at https://www.gitignore.io/?templates=flask,python,pycharm+all
+# Created by https://www.gitignore.io/api/venv,flask,python,pycharm+all
+# Edit at https://www.gitignore.io/?templates=venv,flask,python,pycharm+all
 
 ### Flask ###
 instance/*
@@ -244,4 +244,23 @@ modules.xml
 
 # Pyre type checker
 
-# End of https://www.gitignore.io/api/flask,python,pycharm+all
+### venv ###
+# Virtualenv
+# http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
+[Bb]in
+[Ii]nclude
+[Ll]ib
+[Ll]ib64
+[Ll]ocal
+[Ss]cripts
+pyvenv.cfg
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+pip-selfcheck.json
+
+# End of https://www.gitignore.io/api/venv,flask,python,pycharm+all
