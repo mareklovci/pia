@@ -1,0 +1,20 @@
+[
+    {
+        "author": "Author 1",
+        "title": "Title 1",
+        "content": "First post content",
+        "date_posted": "January 1, 2020"
+    },
+    {
+        "author": "Author 2",
+        "title": "Title 2",
+        "content": "Second post content",
+        "date_posted": "January 2, 2020"
+    },
+    {
+        "author": "Author 1",
+        "title": "Title 3",
+        "content": "Third post content",
+        "date_posted": "January 2, 2020"
+    }
+]
