@@ -1,4 +1,6 @@
-from accounting import app
+from accounting import create_app
+
+app = create_app()
 
 if __name__ == '__main__':
     app.run()

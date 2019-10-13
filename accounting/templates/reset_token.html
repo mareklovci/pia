@@ -7,39 +7,7 @@
             {{ form.hidden_tag() }}
 
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Join Today</legend>
-
-                <!-- Username -->
-                <div class="form-group">
-                    {{ form.username.label(class="form-control-label") }}
-
-                    {% if form.username.errors %}
-                        {{ form.username(class="form-control form-control-lg is-invalid") }}
-                        <div class="invalid-feedback">
-                            {% for error in form.username.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{ form.username(class="form-control form-control-lg") }}
-                    {% endif %}
-                </div>
-
-                <!-- Email -->
-                <div class="form-group">
-                    {{ form.email.label(class="form-control-label") }}
-
-                    {% if form.email.errors %}
-                        {{ form.email(class="form-control form-control-lg is-invalid") }}
-                        <div class="invalid-feedback">
-                            {% for error in form.email.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{ form.email(class="form-control form-control-lg") }}
-                    {% endif %}
-                </div>
+                <legend class="border-bottom mb-4">Reset Password</legend>
 
                 <!-- Password -->
                 <div class="form-group">
@@ -81,11 +49,5 @@
             </div>
 
         </form>
-    </div>
-
-    <div class="border-top pt-3">
-        <small class="text-muted">
-            Already have an account? <a class="ml-2" href="{{ url_for('users.login') }}">Sign In</a>
-        </small>
     </div>
 {% endblock content %}
