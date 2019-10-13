@@ -6,7 +6,7 @@ KIV/PIA
 | Title         | email                | password   |
 |---------------|----------------------|------------|
 | Administrator | mareklovci@gmail.com | admin      |
-| TestUser1     | TestUser1            | testing321 |
+| TestUser1     | testuser1@gmail.com  | testing321 |
 | TestUser2     | TestUser2            | testing987 |
 
 ## Create database from Model
