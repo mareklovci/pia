@@ -4,7 +4,7 @@ import json
 
 
 def main():
-    input_file = open('data/posts.json', encoding='utf-8')
+    input_file = open('posts.json', encoding='utf-8')
     json_array = json.load(input_file)
 
     for item in json_array:
