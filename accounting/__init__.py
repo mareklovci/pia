@@ -16,22 +16,27 @@ login_manager.login_message_category = 'info'
 
 
 def create_app(config_class=Config):
+    # Setup Flask and read config from Config Class defined above
     app = Flask(__name__, static_folder='static', template_folder='templates')
     app.config.from_object(config_class)
 
-    mail.init_app(app)
-    db.init_app(app)
-    bcrypt.init_app(app)
-    login_manager.init_app(app)
+    # Initialize Flask extensions
+    mail.init_app(app)  # Initialize Flask-Mail
+    db.init_app(app)  # Initialize Flask-SQLAlchemy
+    bcrypt.init_app(app)  # Initialize Flask-Bcrypt
+    login_manager.init_app(app)  # Initialize Flask-Login
 
+    # Import application structure
     from accounting.users.routes import users
     from accounting.posts.routes import posts
     from accounting.main.routes import main
     from accounting.errors.handlers import errors
 
+    # Register imported blueprints
     app.register_blueprint(users)
     app.register_blueprint(posts)
     app.register_blueprint(main)
     app.register_blueprint(errors)
 
+    # Return application
     return app

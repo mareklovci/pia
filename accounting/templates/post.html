@@ -3,14 +3,14 @@
 {% block content %}
     <article class="media content-section">
         <img class="rounded-circle article-img"
-             src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}"
+             src="{{ url_for('static', filename='profile_pics/' + post.post_author.image_file) }}"
              alt="Author profile">
         <div class="media-body">
             <div class="article-metadata">
-                <a class="mr-2" href="{{ url_for('users.user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
+                <a class="mr-2" href="{{ url_for('users.user_posts', username=post.post_author.username) }}">{{ post.post_author.username }}</a>
                 <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
 
-                {% if post.author == current_user %}
+                {% if post.post_author == current_user %}
                     <div>
                         <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('posts.update_post', post_id=post.id) }}">Update</a>
 
