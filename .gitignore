@@ -265,4 +265,12 @@ pip-selfcheck.json
 
 # End of https://www.gitignore.io/api/venv,flask,python,pycharm+all
 
+# Add scripts folder
 !/scripts/
+
+# Ignore data in profile_pics folder except default.jpg file
+/accounting/static/profile_pics/*.jpg
+!/accounting/static/profile_pics/default.jpg
+
+# Ignore database
+/accounting/site.db
