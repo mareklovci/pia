@@ -25,33 +25,6 @@ Administrator and 2 users from each role
 
 Two invoices for each user.
 
-## Create database from Model
-
-```python
-from accounting import db
-from accounting import User, Post, Role, UserRoles
-from accounting import create_app
-
-app = create_app()
-app.app_context().push()
-db.create_all()
-```
-
-### Create default users
-
-```python
-from accounting import User, Post
-from accounting import db
-
-user_admin = User(username='admin', email='mareklovci@gmail.com', password='admin')
-db.session.add(user_admin)
-
-user_1 = User(username='TestUser1', email='user1@users.com', password='testing321')
-db.session.add(user_1)
-
-db.session.commit()
-```
-
 ## Create secret key
 
 ```python
