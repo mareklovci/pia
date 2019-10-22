@@ -4,8 +4,9 @@ from flask import Blueprint, flash, redirect, render_template, request, url_for
 from flask_login import current_user, login_required, login_user, logout_user
 
 from accounting import bcrypt, db
-from accounting.models import Post, Roles, User
-from accounting.users.forms import (LoginForm, RegistrationForm, RequestResetForm, ResetPasswordForm, UpdateAccountForm)
+from accounting.models import Roles, User
+from accounting.users.forms import (LoginForm, RegistrationForm, RequestResetForm, ResetPasswordForm, UpdateAccountForm,
+                                    UpdateUserForm)
 from accounting.users.utils import save_picture, send_reset_email
 from accounting.utils import roles_required
 
@@ -125,7 +126,8 @@ def user(user_id):
 @roles_required([Roles.ADMIN.value])
 def update_user(user_id):
     user = User.query.filter_by(id=user_id).first()
-    form = UpdateAccountForm()
+    form = UpdateUserForm()
+    form.id.data = user.id  # we need to push user id into the form to validate user uniqueness
     if form.validate_on_submit():
         if form.picture.data:
             picture_file = save_picture(form.picture.data)
@@ -134,12 +136,12 @@ def update_user(user_id):
         user.email = form.email.data
         db.session.commit()
         flash(f'The account of user {user.username} has been updated!', 'success')
-        return redirect(url_for('users.update_user'))
+        return redirect(url_for('users.update_user', user_id=user.id))
     elif request.method == 'GET':
         form.username.data = user.username
         form.email.data = user.email
     image_file = url_for('static', filename='profile_pics/' + user.image_file)
-    return render_template('user.html', title='User', image_file=image_file, form=form, user=user)
+    return render_template('update_user.html', title='User', image_file=image_file, form=form, user=user)
 
 
 @users.route('/user/<int:user_id>/delete', methods=['POST'])

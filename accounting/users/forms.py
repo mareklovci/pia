@@ -1,10 +1,11 @@
 from flask_login import current_user
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileAllowed, FileField
-from wtforms import BooleanField, PasswordField, StringField, SubmitField
+from wtforms import BooleanField, PasswordField, StringField, SubmitField, IntegerField, HiddenField
 from wtforms.validators import DataRequired, Email, EqualTo, Length, ValidationError
 
 from accounting.models import User
+from users.utils import Unique
 
 
 class RegistrationForm(FlaskForm):
@@ -51,6 +52,8 @@ class LoginForm(FlaskForm):
 
 # noinspection PyMethodMayBeStatic
 class UpdateAccountForm(FlaskForm):
+    """Form for users to allow them update their account"""
+
     username = StringField('Username', validators=[
         DataRequired(),
         Length(min=2, max=20)
@@ -75,6 +78,26 @@ class UpdateAccountForm(FlaskForm):
             user = User.query.filter_by(email=email.data).first()
             if user:
                 raise ValidationError('The email address is already used. Please choose a different one.')
+
+
+class UpdateUserForm(FlaskForm):
+    """Form for administrator to update other users accounts"""
+
+    id = IntegerField(widget=HiddenField())
+    username = StringField('Username', validators=[
+        DataRequired(),
+        Length(min=2, max=20),
+        Unique(User, User.username)
+    ])
+    email = StringField('Email', validators=[
+        DataRequired(),
+        Email(),
+        Unique(User, User.email)
+    ])
+    picture = FileField('Update Profile Picture', validators=[
+        FileAllowed(['jpg', 'png'])
+    ])
+    submit = SubmitField('Update')
 
 
 class RequestResetForm(FlaskForm):

@@ -4,6 +4,7 @@ import secrets
 from PIL import Image
 from flask import current_app, url_for
 from flask_mail import Message
+from wtforms.validators import ValidationError
 
 from accounting import mail
 
@@ -30,3 +31,22 @@ def send_reset_email(user):
     If you did not make this request then simply ignore this email and no changes will be made.
     '''
     mail.send(msg)
+
+
+class Unique(object):
+    """Validator checking field uniqueness"""
+
+    def __init__(self, model, field, message=None):
+        self.model = model
+        self.field = field
+        if not message:
+            # message = 'The username is already used. Please choose a different one.'
+            # message = 'The email address is already used. Please choose a different one.'
+            message = 'The element already exists. Please choose a different one.'
+        self.message = message
+
+    def __call__(self, form, field):
+        check = self.model.query.filter(self.field == field.data).first()
+        object_id = form.id.data if 'id' in form else None
+        if check and (object_id is None or object_id != check.id):
+            raise ValidationError(self.message)
