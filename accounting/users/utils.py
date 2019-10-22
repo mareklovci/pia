@@ -40,8 +40,6 @@ class Unique(object):
         self.model = model
         self.field = field
         if not message:
-            # message = 'The username is already used. Please choose a different one.'
-            # message = 'The email address is already used. Please choose a different one.'
             message = 'The element already exists. Please choose a different one.'
         self.message = message
 

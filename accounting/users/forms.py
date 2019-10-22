@@ -87,12 +87,12 @@ class UpdateUserForm(FlaskForm):
     username = StringField('Username', validators=[
         DataRequired(),
         Length(min=2, max=20),
-        Unique(User, User.username)
+        Unique(User, User.username, message='The username is already used. Please choose a different one.')
     ])
     email = StringField('Email', validators=[
         DataRequired(),
         Email(),
-        Unique(User, User.email)
+        Unique(User, User.email, message='The email address is already used. Please choose a different one.')
     ])
     picture = FileField('Update Profile Picture', validators=[
         FileAllowed(['jpg', 'png'])

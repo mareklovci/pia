@@ -131,7 +131,7 @@ def update_user(user_id):
     if form.validate_on_submit():
         if form.picture.data:
             picture_file = save_picture(form.picture.data)
-            current_user.image_file = picture_file
+            user.image_file = picture_file
         user.username = form.username.data
         user.email = form.email.data
         db.session.commit()
