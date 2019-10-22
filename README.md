@@ -25,6 +25,10 @@ Administrator and 2 users from each role
 
 Two invoices for each user.
 
+## CSS
+
+https://coolors.co/27187e-758bfd-aeb8fe-f1f2f6-ff8600
+
 ## Create secret key
 
 ```python
