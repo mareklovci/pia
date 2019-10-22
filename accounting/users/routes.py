@@ -1,10 +1,13 @@
+from typing import List
+
 from flask import Blueprint, flash, redirect, render_template, request, url_for
 from flask_login import current_user, login_required, login_user, logout_user
 
 from accounting import bcrypt, db
-from accounting.models import Post, User
+from accounting.models import Post, Roles, User
 from accounting.users.forms import (LoginForm, RegistrationForm, RequestResetForm, ResetPasswordForm, UpdateAccountForm)
 from accounting.users.utils import save_picture, send_reset_email
+from accounting.utils import roles_required
 
 users = Blueprint('users', __name__)
 
@@ -69,16 +72,6 @@ def account():
     return render_template('account.html', title='Account', image_file=image_file, form=form)
 
 
-@users.route('/user/<string:username>')
-def user_posts(username):
-    page = request.args.get('page', default=1, type=int)
-    user = User.query.filter_by(username=username).first_or_404()
-    posts = Post.query.filter_by(post_author=user) \
-        .order_by(Post.date_posted.desc()) \
-        .paginate(page=page, per_page=5)
-    return render_template('user_posts.html', posts=posts, user=user)
-
-
 @users.route('/reset_password', methods=['GET', 'POST'])
 def reset_request():
     if current_user.is_authenticated:
@@ -108,3 +101,53 @@ def reset_token(token):
         flash(f'Your password has been updated! You are now able to log in.', 'success')
         return redirect(url_for('users.login'))
     return render_template('reset_token.html', title='Reset Password', form=form)
+
+
+@users.route('/user')
+@login_required
+@roles_required([Roles.ADMIN.value])
+def list_users():
+    users: List = User.query.order_by(User.username.asc()).all()
+    users.remove(current_user)  # remove current user from the list
+    return render_template('list_users.html', users=users)
+
+
+@users.route('/user/<int:user_id>')
+@login_required
+@roles_required([Roles.ADMIN.value])
+def user(user_id):
+    user = User.query.get_or_404(user_id)
+    return render_template('user.html', title=user.username, user=user)
+
+
+@users.route('/user/<int:user_id>/update', methods=['GET', 'POST'])
+@login_required
+@roles_required([Roles.ADMIN.value])
+def update_user(user_id):
+    user = User.query.filter_by(id=user_id).first()
+    form = UpdateAccountForm()
+    if form.validate_on_submit():
+        if form.picture.data:
+            picture_file = save_picture(form.picture.data)
+            current_user.image_file = picture_file
+        user.username = form.username.data
+        user.email = form.email.data
+        db.session.commit()
+        flash(f'The account of user {user.username} has been updated!', 'success')
+        return redirect(url_for('users.update_user'))
+    elif request.method == 'GET':
+        form.username.data = user.username
+        form.email.data = user.email
+    image_file = url_for('static', filename='profile_pics/' + user.image_file)
+    return render_template('user.html', title='User', image_file=image_file, form=form, user=user)
+
+
+@users.route('/user/<int:user_id>/delete', methods=['POST'])
+@login_required
+@roles_required([Roles.ADMIN.value])
+def delete_user(user_id):
+    user = User.query.get_or_404(user_id)
+    db.session.delete(user)
+    db.session.commit()
+    flash('User has been deleted!', 'success')
+    return redirect(url_for('users.list_users'))

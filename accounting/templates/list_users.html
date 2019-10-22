@@ -1,0 +1,34 @@
+{% extends 'blocks/base.html' %}
+
+{% block content %}
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Username</th>
+            <th scope="col">E-Mail</th>
+            <th scope="col">Password</th>
+            <td></td>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <th scope="row" class="align-middle">{{ user.id }}</th>
+                <td class="align-middle">{{ user.username }}</td>
+                <td class="align-middle">{{ user.email }}</td>
+                <td class="align-middle">{{ user.password | truncate(20) }}</td>
+                <td class="text-right">
+                    <div class="row">
+                        <a class="btn btn-primary btn-sm mt-1 mb-1"
+                           href="{{ url_for('users.update_user', user_id=user.id) }}">Detail</a>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock content %}

@@ -1,0 +1,6 @@
+<article class="media content-section">
+    <div class="media-body">
+        <h2><a class="article-title" href="{{ url_for('posts.post', post_id=post.id) }}">{{ post.title }}</a></h2>
+        <p class="article-content">{{ post.content | truncate(150)}}</p>
+    </div>
+</article>

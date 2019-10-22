@@ -42,7 +42,7 @@ class User(db.Model, UserMixin):
     role_id = db.Column(db.Integer(), db.ForeignKey('role.id'))
 
     # Relationships
-    posts = db.relationship('Post', backref='post_author', lazy=True)
+    posts = db.relationship('Post', backref='post_author', lazy=True, cascade='delete')
 
     def get_reset_token(self, expires_sec=1800):
         s = Serializer(current_app.config['SECRET_KEY'], expires_sec)
