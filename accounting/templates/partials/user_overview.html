@@ -1,0 +1,7 @@
+<article class="media content-section">
+    <div class="media-body">
+        <h2><a class="article-title" href="{{ url_for('users.update_user', user_id=user.id) }}">{{ user.username }}</a></h2>
+        <p class="article-content">E-Mail: {{ user.email }}</p>
+        <p class="article-content">Password: {{ user.password | truncate(30) }}</p>
+    </div>
+</article>

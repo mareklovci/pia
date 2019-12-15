@@ -20,6 +20,9 @@ def create_app(config_class=Config):
     app = Flask(__name__, static_folder='static', template_folder='templates')
     app.config.from_object(config_class)
 
+    # ReCAPTCHA is always true
+    app.testing = True
+
     # Initialize Flask extensions
     mail.init_app(app)  # Initialize Flask-Mail
     db.init_app(app)  # Initialize Flask-SQLAlchemy

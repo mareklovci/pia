@@ -1,0 +1,56 @@
+{% extends 'blocks/base.html' %}
+
+{% from "macros/macros.html" import render_field %}
+
+{% block content %}
+    <div class="content-section">
+        <form method="post" action="">
+            <!-- csrf token -->
+            {{ form.hidden_tag() }}
+
+            <fieldset class="form-group">
+                <legend class="legend">Create New User</legend>
+
+                <!-- Name -->
+                {{ render_field(form.name) }}
+
+                <!-- Birth Number -->
+                {{ render_field(form.birth_number) }}
+
+                <!-- Address -->
+                {{ render_field(form.address) }}
+
+                <!-- Email -->
+                {{ render_field(form.email) }}
+
+                <!-- Phone Number -->
+                {{ render_field(form.phone) }}
+
+                <!-- Card Number -->
+                {{ render_field(form.card_number) }}
+
+                <!-- Account Number -->
+                {{ render_field(form.account_number) }}
+
+                <!-- Username -->
+                {{ render_field(form.username) }}
+
+                <!-- Password -->
+                {{ render_field(form.password) }}
+
+                <!-- ReCAPTCHA -->
+                {{ render_field(form.recaptcha) }}
+
+                <!-- Role -->
+                {{ render_field(form.role) }}
+
+            </fieldset>
+
+            <!-- Submit Button -->
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+
+        </form>
+    </div>
+{% endblock content %}

@@ -14,3 +14,7 @@ class Config:
     MAIL_USE_TLS = True
     MAIL_USERNAME = os.environ.get('EMAIL_USER')  # needs to add credentials to SMTP
     MAIL_PASSWORD = os.environ.get('EMAIL_PASS')  # needs to add credentials to SMTP
+
+    # ReCAPTCHA
+    RECAPTCHA_PUBLIC_KEY = '6LcA2McUAAAAACsbkRe4PvOiZZmB7pZi7ccd7Zad'
+    RECAPTCHA_PRIVATE_KEY = '6LcA2McUAAAAACsbkRe4PvOiZZmB7pZi7ccd7Zad'

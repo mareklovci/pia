@@ -17,12 +17,6 @@
                 <!-- Password -->
                 {{ render_field(form.password) }}
 
-                <!-- Remember Form Check -->
-                <div class="form-check">
-                    {{ form.remember(class="form-check-input") }}
-                    {{ form.remember.label(class="form-check-label") }}
-                </div>
-
             </fieldset>
 
             <!-- Submit Button -->
@@ -36,9 +30,4 @@
         </form>
     </div>
 
-    <div class="border-top pt-3">
-        <small class="text-muted">
-            Need an Account? <a class="ml-2" href="{{ url_for('users.register') }}">Sign Up</a>
-        </small>
-    </div>
 {% endblock content %}

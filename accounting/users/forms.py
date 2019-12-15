@@ -1,30 +1,48 @@
 from flask_login import current_user
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileAllowed, FileField
-from wtforms import BooleanField, PasswordField, StringField, SubmitField, IntegerField, HiddenField
+from flask_wtf.recaptcha import RecaptchaField
+from wtforms import HiddenField, IntegerField, PasswordField, SelectField, StringField, SubmitField
 from wtforms.validators import DataRequired, Email, EqualTo, Length, ValidationError
 
-from accounting.models import User
+from accounting.models import Roles, User
 from users.utils import Unique
 
 
 class RegistrationForm(FlaskForm):
-    username = StringField('Username', validators=[
-        DataRequired(),
-        Length(min=2, max=20)
+    name = StringField('Name', validators=[
+        DataRequired()
+    ])
+    birth_number = StringField('Birth Number', validators=[
+        DataRequired()
+    ])
+    address = StringField('Address', validators=[
     ])
     email = StringField('Email', validators=[
         DataRequired(),
         Email()
     ])
-    password = PasswordField('Password', validators=[
+    phone = StringField('Phone Number', validators=[
+    ])
+    card_number = StringField('Card Number', validators=[
         DataRequired()
     ])
-    confirm_password = PasswordField('Confirm Password', validators=[
-        DataRequired(),
-        EqualTo('password')
+    account_number = StringField('Account Number', validators=[
+        DataRequired()
     ])
-    submit = SubmitField('Sign Up')
+    recaptcha = RecaptchaField()
+    username = StringField('Username', validators=[
+        DataRequired(),
+        Length(min=2, max=20)
+    ])
+    password = StringField('Password', validators=[
+        DataRequired()
+    ])
+
+    role = SelectField('Role', choices=[(Roles.ADMIN.value, 'Admin'),
+                                        (Roles.ACCOUNTANT.value, 'Accountant'),
+                                        (Roles.SECRETARY.value, 'Secretary')])
+    submit = SubmitField('Create User')
 
     # noinspection PyMethodMayBeStatic
     def validate_username(self, username):
@@ -46,7 +64,6 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[
         DataRequired()
     ])
-    remember = BooleanField('Remember Me')
     submit = SubmitField('Login')
 
 

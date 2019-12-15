@@ -23,17 +23,18 @@ def load_user(user_id):
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
 
+    # User information
+    name = db.Column(db.String(100), nullable=False, server_default='')
+    birth_number = db.Column(db.String(100), nullable=False, server_default='')
+    address = db.Column(db.String(100), nullable=False, server_default='')
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    phone = db.Column(db.String(50), nullable=False, server_default='')
+    card_number = db.Column(db.String(50), nullable=False, server_default='')
+    account_number = db.Column(db.String(50), nullable=False, server_default='')
+
     # User authentication information
     username = db.Column(db.String(50), nullable=False, unique=True)
     password = db.Column(db.String(60), nullable=False)
-
-    # User email information
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    confirmed_at = db.Column(db.DateTime())
-
-    # User information
-    first_name = db.Column(db.String(100), nullable=False, server_default='')
-    last_name = db.Column(db.String(100), nullable=False, server_default='')
 
     # Extras
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')

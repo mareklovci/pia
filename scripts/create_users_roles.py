@@ -32,10 +32,10 @@ def main():
             db.session.add(admin001)
 
         # Create 'Users'
-        user001 = create_user('User001', '0001', 'user001@test.com', accountant)
-        user002 = create_user('User002', '0002', 'user002@test.com', accountant)
-        user003 = create_user('User003', '0003', 'user003@test.com', secretary)
-        user004 = create_user('User004', '0004', 'user004@test.com', secretary)
+        user001 = create_user('User0001', '0001', 'user0001@test.com', accountant)
+        user002 = create_user('User0002', '0002', 'user0002@test.com', accountant)
+        user003 = create_user('User0003', '0003', 'user0003@test.com', secretary)
+        user004 = create_user('User0004', '0004', 'user0004@test.com', secretary)
 
         if not User.query.filter(User.username == 'User001').first():
             db.session.add(user001)

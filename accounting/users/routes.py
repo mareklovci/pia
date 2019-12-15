@@ -1,34 +1,26 @@
 from typing import List
 
+from faker import Faker
+from faker.providers import barcode, internet, phone_number, credit_card
 from flask import Blueprint, flash, redirect, render_template, request, url_for
 from flask_login import current_user, login_required, login_user, logout_user
 
 from accounting import bcrypt, db
-from accounting.models import Roles, User
+from accounting.models import Role, Roles, User
 from accounting.users.forms import (LoginForm, RegistrationForm, RequestResetForm, ResetPasswordForm, UpdateAccountForm,
                                     UpdateUserForm)
 from accounting.users.utils import save_picture, send_reset_email
 from accounting.utils import roles_required
 
+from random import randint
+
 users = Blueprint('users', __name__)
 
-
-# noinspection PyArgumentList
-@users.route('/register', methods=['GET', 'POST'])
-def register():
-    if current_user.is_authenticated:
-        return redirect(url_for('main.home'))
-    form = RegistrationForm()
-    if form.validate_on_submit():
-        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        user = User(username=form.username.data,
-                    email=form.email.data,
-                    password=hashed_password)
-        db.session.add(user)
-        db.session.commit()
-        flash(f'Your account has been created! You are now able to log in.', 'success')
-        return redirect(url_for('users.login'))
-    return render_template('register.html', title='Register', form=form)
+fake = Faker()
+fake.add_provider(barcode)
+fake.add_provider(internet)
+fake.add_provider(phone_number)
+fake.add_provider(credit_card)
 
 
 @users.route('/login', methods=['GET', 'POST'])
@@ -39,7 +31,7 @@ def login():
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
-            login_user(user, remember=form.remember.data)
+            login_user(user)
             next_page = request.args.get('next')
             return redirect(next_page) if next_page else redirect(url_for('main.home'))
         else:
@@ -113,12 +105,43 @@ def list_users():
     return render_template('list_users.html', users=users)
 
 
-@users.route('/user/<int:user_id>')
+# noinspection PyArgumentList
+@users.route('/user/create', methods=['GET', 'POST'])
 @login_required
 @roles_required([Roles.ADMIN.value])
-def user(user_id):
-    user = User.query.get_or_404(user_id)
-    return render_template('user.html', title=user.username, user=user)
+def create_user():
+    form = RegistrationForm()
+
+    if request.method == 'GET':
+        # push random values into the form
+        form.name.data = fake.name()
+        form.birth_number.data = fake.ean(length=13)
+        form.address.data = fake.address()
+        form.username.data = 'User' + str(randint(1000, 9999))
+        form.email.data = form.username.data + '@' + fake.free_email_domain()
+        form.phone.data = fake.phone_number()
+        form.card_number.data = fake.credit_card_number(card_type=None)
+        form.account_number.data = fake.ean(length=13)
+        form.password.data = str(randint(1000, 9999))
+
+    if form.validate_on_submit():
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+        user_role = Role.query.filter_by(name=form.role.data).first()
+        user = User(name=form.name.data,
+                    birth_number=form.birth_number.data,
+                    address=form.address.data,
+                    username=form.username.data,
+                    email=form.email.data,
+                    phone=form.phone.data,
+                    card_number=form.card_number.data,
+                    account_number=form.account_number.data,
+                    password=hashed_password,
+                    role_id=user_role.id)
+        db.session.add(user)
+        db.session.commit()
+        flash(f'The account has been created! User is now able to log in.', 'success')
+        return redirect(url_for('users.list_users'))
+    return render_template('create_user.html', title='Register', form=form)
 
 
 @users.route('/user/<int:user_id>/update', methods=['GET', 'POST'])

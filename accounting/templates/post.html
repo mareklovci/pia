@@ -15,31 +15,23 @@
                         <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('posts.update_post', post_id=post.id) }}">Update</a>
 
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal"
-                                data-target="#deleteModal">Delete
+                        <button type="button" class="btn btn-danger btn-sm m-1" id="deleteConfirm"
+                                onclick="deleteConfirmPost()">Delete
                         </button>
 
                         <!-- Modal -->
-                        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
-                             aria-labelledby="deleteModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="deleteModalLabel">Delete Post?</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
-                                        </button>
-                                        <form action="{{ url_for('posts.delete_post', post_id=post.id) }}" method="post">
-                                            <input class="btn btn-danger" type="submit" value="Delete">
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <script>
+                            function deleteConfirmPost() {
+                                const form = document.createElement('form');
+                                form.method = "post";
+                                form.action = "{{ url_for('posts.delete_post', post_id=post.id) }}";
+
+                                if (confirm("Delete Post?") === true) {
+                                    document.body.appendChild(form);
+                                    form.submit();
+                                }
+                            }
+                        </script>
 
                     </div>
                 {% endif %}

@@ -43,6 +43,28 @@
                 {{ form.submit(class="btn btn-outline-info") }}
             </div>
 
+            {% if user != current_user %}
+                <div>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-danger m-1" id="deleteConfirm"
+                            onclick="deleteConfirmUser()">Delete
+                    </button>
+
+                    <!-- Modal -->
+                    <script>
+                        function deleteConfirmUser() {
+                            const form = document.createElement('form');
+                            form.method = "post";
+                            form.action = "{{ url_for('users.delete_user', user_id=user.id) }}";
+
+                            if (confirm("Delete User?") === true) {
+                                document.body.appendChild(form);
+                                form.submit();
+                            }
+                        }
+                    </script>
+                </div>
+            {% endif %}
         </form>
 
     </div>
