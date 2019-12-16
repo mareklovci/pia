@@ -1,5 +1,5 @@
-from accounting import bcrypt, create_app, db
-from accounting.models import Role, User, Roles
+from app import bcrypt, create_app, db
+from app.models import Role, User, Roles
 
 
 def main():

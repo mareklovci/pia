@@ -4,7 +4,7 @@ from flask_login import LoginManager
 from flask_mail import Mail
 from flask_sqlalchemy import SQLAlchemy
 
-from accounting.config import Config
+from app.config import Config
 
 mail = Mail()
 db = SQLAlchemy()
@@ -30,10 +30,10 @@ def create_app(config_class=Config):
     login_manager.init_app(app)  # Initialize Flask-Login
 
     # Import application structure
-    from accounting.users.routes import users
-    from accounting.posts.routes import posts
-    from accounting.main.routes import main
-    from accounting.errors.handlers import errors
+    from app.users.routes import users
+    from app.posts.routes import posts
+    from app.main.routes import main
+    from app.errors.handlers import errors
 
     # Register imported blueprints
     app.register_blueprint(users)

@@ -1,7 +1,7 @@
 from flask_testing import TestCase
 
-from accounting.models import User
-from accounting import create_app, db
+from app.models import User
+from app import create_app, db
 import unittest
 
 

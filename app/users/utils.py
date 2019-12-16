@@ -6,7 +6,7 @@ from flask import current_app, url_for
 from flask_mail import Message
 from wtforms.validators import ValidationError
 
-from accounting import mail
+from app import mail
 
 
 def save_picture(form_picture, output_size=(125, 125), nbytes=8):

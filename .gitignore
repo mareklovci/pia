@@ -270,7 +270,7 @@ pip-selfcheck.json
 
 # Ignore data in profile_pics folder except default.jpg file
 /accounting/static/profile_pics/*.jpg
-!/accounting/static/profile_pics/default.jpg
+!/app/static/profile_pics/default.jpg
 
 # Ignore database
-/accounting/site.db
+/app/site.db

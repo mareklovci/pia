@@ -1,5 +1,5 @@
-from accounting import db, create_app
-from accounting.models import Post, User
+from app import db, create_app
+from app.models import Post, User
 import json
 
 

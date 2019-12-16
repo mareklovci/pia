@@ -1,10 +1,10 @@
 from flask import Blueprint, abort, flash, redirect, render_template, request, url_for
 from flask_login import current_user, login_required
 
-from accounting import db
-from accounting.utils import roles_required
-from accounting.models import Post, Roles
-from accounting.posts.forms import PostForm
+from app import db
+from app.utils import roles_required
+from app.models import Post, Roles
+from app.posts.forms import PostForm
 
 posts = Blueprint('posts', __name__)
 

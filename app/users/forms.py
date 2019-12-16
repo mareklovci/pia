@@ -5,7 +5,7 @@ from flask_wtf.recaptcha import RecaptchaField
 from wtforms import HiddenField, IntegerField, PasswordField, SelectField, StringField, SubmitField
 from wtforms.validators import DataRequired, Email, EqualTo, Length, ValidationError
 
-from accounting.models import Roles, User
+from app.models import Roles, User
 from users.utils import Unique
 
 

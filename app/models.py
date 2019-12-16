@@ -5,7 +5,7 @@ from flask import current_app
 from flask_login import UserMixin
 from itsdangerous import SignatureExpired, TimedJSONWebSignatureSerializer as Serializer
 
-from accounting import db, login_manager
+from app import db, login_manager
 
 
 class Roles(Enum):

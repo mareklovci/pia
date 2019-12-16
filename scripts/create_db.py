@@ -1,4 +1,4 @@
-from accounting import create_app, db
+from app import create_app, db
 
 
 def main():

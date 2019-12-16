@@ -5,12 +5,12 @@ from faker.providers import barcode, internet, phone_number, credit_card
 from flask import Blueprint, flash, redirect, render_template, request, url_for
 from flask_login import current_user, login_required, login_user, logout_user
 
-from accounting import bcrypt, db
-from accounting.models import Role, Roles, User
-from accounting.users.forms import (LoginForm, RegistrationForm, RequestResetForm, ResetPasswordForm, UpdateAccountForm,
-                                    UpdateUserForm)
-from accounting.users.utils import save_picture, send_reset_email
-from accounting.utils import roles_required
+from app import bcrypt, db
+from app.models import Role, Roles, User
+from app.users.forms import (LoginForm, RegistrationForm, RequestResetForm, ResetPasswordForm, UpdateAccountForm,
+                             UpdateUserForm)
+from app.users.utils import save_picture, send_reset_email
+from app.utils import roles_required
 
 from random import randint
 
