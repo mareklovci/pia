@@ -80,15 +80,34 @@ class Role(db.Model):
 class Invoice(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
 
+    date_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)  # datum vystaveni
+    issue_date = db.Column(db.DateTime())  # datum zdanitelneho plneni
+    due_date = db.Column(db.DateTime())  # splatnost
+    payment_form = db.Column(db.String(256))  # forma uhrady
+
     serial_number = db.Column(db.Integer(), db.Sequence('invoice_serial_number_seq'))
-    date_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    issue_date = db.Column(db.DateTime())
-    due_date = db.Column(db.DateTime())
     total_sum = db.Column(db.Integer())
-    reduced_tax = db.Column(db.Boolean(), nullable=False, default=False)
 
     # Relationships
     company = db.Column(db.Integer, db.ForeignKey('company.id'))
+    items = db.relationship('Item', backref='item_invoice', lazy='dynamic', collection_class=list)
+
+
+class Item(db.Model):
+    id = db.Column(db.Integer(), primary_key=True)
+
+    # Fields
+    count = db.Column(db.Integer())
+    unit = db.Column(db.String(50))
+    desc = db.Column(db.String(255))
+    vat = db.Column(db.Integer())  # % DPH (Value-added tax)
+    price = db.Column(db.Float())
+
+    # Calculated fields
+    total_price = db.Column(db.Float())
+
+    # Relationships
+    invoice = db.Column(db.Integer, db.ForeignKey('invoice.id'))
 
 
 class Company(db.Model):

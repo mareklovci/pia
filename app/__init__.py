@@ -32,12 +32,14 @@ def create_app(config_class=Config):
     # Import application structure
     from app.users.routes import users
     from app.posts.routes import posts
+    from app.invoices.routes import invoices
     from app.main.routes import main
     from app.errors.handlers import errors
 
     # Register imported blueprints
     app.register_blueprint(users)
     app.register_blueprint(posts)
+    app.register_blueprint(invoices)
     app.register_blueprint(main)
     app.register_blueprint(errors)
 

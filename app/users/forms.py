@@ -6,7 +6,7 @@ from wtforms import HiddenField, IntegerField, PasswordField, SelectField, Strin
 from wtforms.validators import DataRequired, Email, EqualTo, Length, ValidationError
 
 from app.models import Roles, User
-from users.utils import Unique
+from .utils import Unique
 
 
 class RegistrationForm(FlaskForm):

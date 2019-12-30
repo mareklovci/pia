@@ -37,9 +37,13 @@ import secrets
 secrets.token_hex(16)
 ```
 
+## Docker
+
+Remove Docker images: `docker rm -f $(docker ps -aq)`.
+
 ```shell script
 $ docker build -f Dockerfile -t pia-flask:latest .
 $ docker run -p 5000:5000 --rm -e LC_ALL=C.UTF-8 -e LANG=C.UTF-8 -e FLASK_ENV=development -e FLASK_DEBUG=1 -e FLASK_APP=app.py pia-flask
 ```
 
-`http://192.168.99.100:5000/`
+Endpoint: `http://192.168.99.100:5000/`.

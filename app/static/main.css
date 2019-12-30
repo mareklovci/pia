@@ -391,6 +391,10 @@ pre, blockquote, dl, figure, table, p, ul, ol, form {
     border-bottom: 1px solid #555555;
 }
 
+.is-hidden {
+    display: none;
+}
+
 /* Misc
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
