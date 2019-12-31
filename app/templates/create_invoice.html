@@ -49,48 +49,6 @@
 
                         </div>
                     {% endfor %}
-
-                    {# Form Template #}
-                    <div id="item-_-form" class="subform hidden" data-index="0">
-                        <!-- Count -->
-                        <div class="form-group">
-                            <label class="form-control-label" for="items-_-count">Count</label>
-                            <input class="form-control form-control-lg" id="items-_-count" name="items-_-count"
-                                   required="" type="text" value="">
-                        </div>
-
-                        <!-- Unit -->
-                        <div class="form-group">
-                            <label class="form-control-label" for="items-_-unit">Unit</label>
-                            <input class="form-control form-control-lg" id="items-_-unit" name="items-_-unit"
-                                   required="" type="text" value="">
-                        </div>
-
-                        <!-- Description -->
-                        <div class="form-group">
-                            <label class="form-control-label" for="items-_-desc">Description</label>
-                            <input class="form-control form-control-lg" id="items-_-desc" name="items-_-desc"
-                                   required="" type="text" value="">
-                        </div>
-
-                        <!-- VAT Rate -->
-                        <div class="form-group">
-                            <label class="form-control-label" for="items-_-vat">VAT</label>
-                            <input class="form-control form-control-lg" id="items-_-vat" name="items-_-vat" required=""
-                                   type="text" value="">
-                        </div>
-
-                        <!-- Price -->
-                        <div class="form-group">
-                            <label class="form-control-label" for="items-_-price">Price</label>
-                            <input class="form-control form-control-lg" id="items-_-price" name="items-_-price"
-                                   required="" type="text" value="">
-                        </div>
-
-                        <!-- Remove Item Button -->
-                        <a class="remove btn btn-danger" href="#" role="button">Remove</a>
-                    </div>
-
                 </div>
 
             </fieldset>
@@ -101,6 +59,10 @@
             </div>
 
         </form>
+
+        {# Form Template #}
+        {% include 'partials/form_template.html' %}
+
     </div>
 
     <script type="text/javascript" src="{{ url_for('static', filename='js/invoice.js') }}"></script>

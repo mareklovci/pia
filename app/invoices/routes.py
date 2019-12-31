@@ -1,10 +1,12 @@
 from datetime import date
 
-from flask import Blueprint, redirect, render_template, request, url_for
+from flask import Blueprint, redirect, render_template, request, url_for, flash
+from flask_login import login_required
 
 from app import db
+from app.utils import roles_required
 from app.invoices.forms import InvoiceForm
-from app.models import Invoice, Item
+from app.models import Invoice, Item, Roles
 
 invoices = Blueprint('invoices', __name__)
 
@@ -24,7 +26,6 @@ def create_invoice():
         db.session.add(new_invoice)
 
         total_sum = 0
-
         for item in form.items.data:
             new_item = Item(**item)
             new_item.total_price = new_item.count * new_item.price
@@ -33,6 +34,7 @@ def create_invoice():
 
         new_invoice.total_sum = total_sum
         db.session.commit()
+        flash('Your invoice has been created!', 'success')
         return redirect(url_for('invoices.invoice', invoice_id=new_invoice.id))
 
     return render_template('create_invoice.html', form=form)
@@ -49,3 +51,21 @@ def invoice(invoice_id):
 def list_invoices():
     all_invoices = Invoice.query
     return render_template('list_invoices.html', invoices=all_invoices)
+
+
+@invoices.route('/invoice/<int:invoice_id>/update', methods=['GET', 'POST'])
+@login_required
+@roles_required([Roles.ACCOUNTANT.value])
+def update_invoice(invoice_id):
+    pass
+
+
+@invoices.route('/invoice/<int:invoice_id>/delete', methods=['POST'])
+@login_required
+@roles_required([Roles.ACCOUNTANT.value])
+def delete_invoice(invoice_id):
+    bill = Invoice.query.get_or_404(invoice_id)
+    db.session.delete(bill)
+    db.session.commit()
+    flash('Your post has been deleted!', 'success')
+    return redirect(url_for('invoices.list_invoices'))
