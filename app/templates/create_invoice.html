@@ -8,11 +8,11 @@
             <!-- csrf token -->
             {{ form.hidden_tag() }}
 
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4">{{ legend }}</legend>
+            <h2>Create New Invoice</h2>
 
+            <fieldset class="form-group">
                 <!-- Date Created -->
-                {{ render_field(form.date_created) }}
+                {{ render_field(form.issue_date) }}
 
                 <!-- Due Date -->
                 {{ render_field(form.due_date) }}
@@ -21,10 +21,11 @@
                 {{ render_field(form.payment_form) }}
 
                 <!-- Add Item Button -->
-                <a id="add" href="#">Add Item</a>
+                <a id="add" href="#" class="btn btn-primary" role="button">Add Item</a>
 
                 <!-- Items -->
                 <div id="subforms-container">
+
                     {% for subform in form.items %}
                         <div id="item-{{ loop.index0 }}-form" class="subform" data-index="{{ loop.index0 }}">
 
@@ -40,116 +41,68 @@
                             <!-- VAT Rate -->
                             {{ render_field(subform.vat) }}
 
+                            <!-- Price -->
+                            {{ render_field(subform.price) }}
+
                             <!-- Remove Item Button -->
-                            <a class="remove" href="#">Remove</a>
+                            <a class="remove btn btn-danger" href="#" role="button">Remove</a>
 
                         </div>
                     {% endfor %}
+
+                    {# Form Template #}
+                    <div id="item-_-form" class="subform hidden" data-index="0">
+                        <!-- Count -->
+                        <div class="form-group">
+                            <label class="form-control-label" for="items-_-count">Count</label>
+                            <input class="form-control form-control-lg" id="items-_-count" name="items-_-count"
+                                   required="" type="text" value="">
+                        </div>
+
+                        <!-- Unit -->
+                        <div class="form-group">
+                            <label class="form-control-label" for="items-_-unit">Unit</label>
+                            <input class="form-control form-control-lg" id="items-_-unit" name="items-_-unit"
+                                   required="" type="text" value="">
+                        </div>
+
+                        <!-- Description -->
+                        <div class="form-group">
+                            <label class="form-control-label" for="items-_-desc">Description</label>
+                            <input class="form-control form-control-lg" id="items-_-desc" name="items-_-desc"
+                                   required="" type="text" value="">
+                        </div>
+
+                        <!-- VAT Rate -->
+                        <div class="form-group">
+                            <label class="form-control-label" for="items-_-vat">VAT</label>
+                            <input class="form-control form-control-lg" id="items-_-vat" name="items-_-vat" required=""
+                                   type="text" value="">
+                        </div>
+
+                        <!-- Price -->
+                        <div class="form-group">
+                            <label class="form-control-label" for="items-_-price">Price</label>
+                            <input class="form-control form-control-lg" id="items-_-price" name="items-_-price"
+                                   required="" type="text" value="">
+                        </div>
+
+                        <!-- Remove Item Button -->
+                        <a class="remove btn btn-danger" href="#" role="button">Remove</a>
+                    </div>
+
                 </div>
 
             </fieldset>
 
             <!-- Submit Button -->
             <div class="form-group">
-                {{ form.submit(class="btn btn-outline-info") }}
+                {{ form.submit(class="btn btn-primary") }}
             </div>
 
         </form>
     </div>
 
-    <script type="text/javascript">
-
-        /**
-         * Adjust the indices of form fields when removing items.
-         */
-        function adjustIndices(removedIndex) {
-            var $forms = $('.subform');
-
-            $forms.each(function (i) {
-                var $form = $(this);
-                var index = parseInt($form.data('index'));
-                var newIndex = index - 1;
-
-                if (index < removedIndex) {
-                    // Skip
-                    return true;
-                }
-
-                // Change ID in form itself
-                $form.attr('id', $form.attr('id').replace(index, newIndex));
-                $form.data('index', newIndex);
-
-                // Change IDs in form inputs
-                $form.find('input').each(function (j) {
-                    var $item = $(this);
-                    $item.attr('id', $item.attr('id').replace(index, newIndex));
-                    $item.attr('name', $item.attr('name').replace(index, newIndex));
-                });
-            });
-        }
-
-        /**
-         * Remove a subform.
-         */
-        function removeForm() {
-            var $removedForm = $(this).closest('.subform');
-            var removedIndex = parseInt($removedForm.data('index'));
-
-            $removedForm.remove();
-
-            // Update indices
-            adjustIndices(removedIndex);
-        }
-
-        /**
-         * Add a new subform.
-         */
-        function addForm() {
-            var $templateForm = $('#item-_-form');
-
-            if (!$templateForm) {
-                console.log('[ERROR] Cannot find template');
-                return;
-            }
-
-            // Get Last index
-            var $lastForm = $('.subform').last();
-
-            var oldIndex = parseInt($lastForm.data('index'));
-            var newIndex = 0;
-
-            if ($lastForm.length > 0) {
-                newIndex = oldIndex + 1;
-            }
-
-            // Add elements
-            var $newForm = $lastForm.clone();
-
-            $newForm.attr('id', $newForm.attr('id').replace(oldIndex, newIndex));
-            $newForm.data('index', newIndex);
-
-            $newForm.find('input').each(function (idx) {
-                var $item = $(this);
-
-                $item.attr('id', $item.attr('id').replace(oldIndex, newIndex));
-                $item.attr('name', $item.attr('name').replace(oldIndex, newIndex));
-            });
-
-            // Append
-            $('#subforms-container').append($newForm);
-            $newForm.addClass('subform');
-            $newForm.removeClass('is-hidden');
-
-            $newForm.find('.remove').click(removeForm);
-        }
-
-        $(document).ready(function () {
-            $('#add').click(addForm);
-            $('.remove').click(removeForm);
-        });
-
-    </script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/invoice.js') }}"></script>
 
 {% endblock %}
-
-

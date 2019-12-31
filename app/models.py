@@ -97,7 +97,7 @@ class Item(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
 
     # Fields
-    count = db.Column(db.Integer())
+    count = db.Column(db.Float())
     unit = db.Column(db.String(50))
     desc = db.Column(db.String(255))
     vat = db.Column(db.Integer())  # % DPH (Value-added tax)

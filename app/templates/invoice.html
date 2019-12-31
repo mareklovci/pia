@@ -1,10 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'blocks/base.html' %}
 
-</body>
-</html>
+{% block content %}
+    <article class="media content-section">
+        <div class="media-body">
+            <h2 class="article-title">Invoice Number: {{ invoice.id }}</h2>
+
+            <div class="group">
+                <span class="info">
+                    <b>Created:</b> {{ invoice.date_created }}
+                </span>
+                <span class="info">
+                    <b>Issue Date:</b> {{ invoice.issue_date }}
+                </span>
+                <span class="info">
+                    <b>Due Date:</b> {{ invoice.due_date }}
+                </span>
+                <span class="info">
+                    <b>Payment:</b> {{ invoice.payment_form }}
+                </span>
+                <span class="info last">
+                    <b>Serial Number:</b> {{ invoice.serial_number }}
+                </span>
+            </div>
+
+            <h3>Seller</h3>
+
+            <h3>Buyer</h3>
+
+            <h3>Invoice Items</h3>
+
+            <table class="u-full-width">
+                <thead>
+                <tr>
+                    <th>Count</th>
+                    <th>Unit</th>
+                    <th>Description</th>
+                    <th>VAT %</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for item in invoice.items %}
+                    <tr>
+                        <td>{{ "{0:0,.1f}".format(item.count) }}</td>
+                        <td>{{ item.unit }}</td>
+                        <td>{{ item.desc }}</td>
+                        <td>{{ item.vat }}</td>
+                        <td>{{ "{0:0,.1f}".format(item.price) }}</td>
+                        <td>{{ "{0:0,.1f}".format(item.total_price) }}</td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+
+            <div class="group">
+                <span class="u-pull-right">
+                    <b>Total Price with VAT: {{ "{0:0,.2f}".format(invoice.total_sum) }} $</b>
+                </span>
+            </div>
+
+        </div>
+    </article>
+{% endblock content %}
