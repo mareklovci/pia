@@ -1,0 +1,12 @@
+{% extends 'blocks/base.html' %}
+
+{% from "macros/macros.html" import render_pagination %}
+
+{% block content %}
+    {% for contact in contacts.items %}
+        {% include 'partials/contact_overview.html' %}
+    {% endfor %}
+
+    {{ render_pagination(contacts, 'companies.list_contacts') }}
+
+{% endblock content %}

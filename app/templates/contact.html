@@ -1,0 +1,45 @@
+{% extends 'blocks/base.html' %}
+
+{% block content %}
+    <article class="media content-section">
+        <div class="media-body">
+{#            <div class="article-metadata">#}
+{#                <a class="mr-2" href="#">{{ post.post_author.username }}</a>#}
+{#                <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>#}
+{##}
+{#                {% if post.post_author == current_user %}#}
+{#                    <div>#}
+{#                        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('posts.update_post', post_id=post.id) }}">Update</a>#}
+{##}
+{#                        <!-- Button trigger modal -->#}
+{#                        <button type="button" class="btn btn-danger btn-sm m-1" id="deleteConfirm"#}
+{#                                onclick="deleteConfirmPost()">Delete#}
+{#                        </button>#}
+{##}
+{#                        <!-- Modal -->#}
+{#                        <script>#}
+{#                            function deleteConfirmPost() {#}
+{#                                const form = document.createElement('form');#}
+{#                                form.method = "post";#}
+{#                                form.action = "{{ url_for('posts.delete_post', post_id=post.id) }}";#}
+{##}
+{#                                if (confirm("Delete Post?") === true) {#}
+{#                                    document.body.appendChild(form);#}
+{#                                    form.submit();#}
+{#                                }#}
+{#                            }#}
+{#                        </script>#}
+{##}
+{#                    </div>#}
+{#                {% endif %}#}
+{#            </div>#}
+
+            <h2 class="article-title">{{ contact.name }}</h2>
+            <p class="article-content">{{ contact.residence }}</p>
+            <p class="article-content">{{ contact.ic }}</p>
+            <p class="article-content">{{ contact.dic }}</p>
+            <p class="article-content">{{ contact.phone }}</p>
+            <p class="article-content">{{ contact.email }}</p>
+        </div>
+    </article>
+{% endblock content %}

@@ -1,10 +1,12 @@
 {% extends 'blocks/base.html' %}
 
+{% from "macros/macros.html" import render_pagination %}
+
 {% block content %}
     {% for post in posts.items %}
         {% include 'partials/post_overview.html' %}
     {% endfor %}
 
-    {% include 'partials/pagination.html' %}
+    {{ render_pagination(posts, 'main.home') }}
 
 {% endblock content %}
