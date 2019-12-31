@@ -1,0 +1,28 @@
+{% extends 'blocks/base.html' %}
+
+{% block content %}
+
+    <h1>List of Invoices</h1>
+
+    <div class="last">
+        <a class="btn btn-primary" href="{{ url_for('invoices.create_invoice') }}">Create New Invoice</a>
+    </div>
+
+    <div class="last">
+        <form action="https://example.com">
+            <label>
+                Day From:
+                <input type="date" name="bday">
+            </label>
+
+            <p>
+                <button>Submit</button>
+            </p>
+        </form>
+    </div>
+
+    {% for invoice in invoices %}
+        {% include 'partials/invoice_overview.html' %}
+    {% endfor %}
+
+{% endblock content %}

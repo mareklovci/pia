@@ -4,8 +4,8 @@
 
     <h1>List of Users</h1>
 
-    <div>
-        <a class="button button-primary" href="{{ url_for('users.create_user') }}">Create New User</a>
+    <div class="last">
+        <a class="btn btn-primary" href="{{ url_for('users.create_user') }}">Create New User</a>
     </div>
 
     {% for user in users %}

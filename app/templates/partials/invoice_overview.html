@@ -1,0 +1,8 @@
+<article class="media content-section">
+    <div class="media-body">
+        <h2><a class="article-title" href="{{ url_for('invoices.invoice', invoice_id=invoice.id) }}">Invoice {{ invoice.id }}</a></h2>
+        <p class="article-content">Date Created: {{ invoice.date_created }}</p>
+        <p class="article-content">Issue Date: {{ invoice.issue_date }}</p>
+        <p class="article-content">Due Date: {{ invoice.due_date }}</p>
+    </div>
+</article>

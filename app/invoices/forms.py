@@ -9,21 +9,15 @@ class ItemForm(Form):
 
     CSRF is disabled for this subform (using `Form` as parent class) because it is never used by itself.
     """
-    count = FloatField('Count', validators=[
-        DataRequired()
-    ])
+    count = FloatField('Count', default=0.0)
     unit = StringField('Unit', validators=[
         DataRequired()
     ])
     desc = StringField('Description', validators=[
         DataRequired()
     ])
-    vat = IntegerField('VAT', validators=[
-        DataRequired()
-    ])
-    price = FloatField('Price', validators=[
-        DataRequired()
-    ])
+    vat = IntegerField('VAT', default=0)
+    price = FloatField('Price', default=0.0)
 
 
 class InvoiceForm(FlaskForm):

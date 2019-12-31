@@ -117,9 +117,6 @@ class Company(db.Model):
     dic = db.Column(db.String(50), unique=True)
     residence = db.Column(db.String(50), unique=False, default='')
 
-    # Foreign keys
-    secretary_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-
     # Relationships
     invoices = db.relationship('Invoice', backref='invoice_company', lazy=True)
     contacts = db.relationship('Contact', backref='contact_author', lazy=True)
