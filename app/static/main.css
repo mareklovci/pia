@@ -16,9 +16,9 @@
 - Media Queries
 */
 
-
 /* Grid
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
 .container {
     position: relative;
     width: 100%;
@@ -109,9 +109,9 @@ body {
     background: #f1f2f6;
 }
 
-
 /* Typography
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
 h1, h2, h3, h4, h5, h6 {
     margin-top: 0;
     margin-bottom: 2rem;
@@ -150,22 +150,21 @@ p {
     margin-top: 0;
 }
 
+/* Links
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
 a {
+    color: #1eaedb;
     text-decoration: none;
 }
 
-
-/* Links
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-a {
-    color: #1eaedb; }
-
 a:hover {
-    color: #0fa0ce; }
-
+    color: #0fa0ce;
+}
 
 /* Buttons
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
 [role="button"] {
     cursor: pointer;
 }
@@ -666,56 +665,9 @@ input[type="button"].btn-block {
     width: 100%;
 }
 
-.clearfix:before,
-.clearfix:after {
-    display: table;
-    content: " ";
-}
-
-.clearfix:after {
-    clear: both;
-}
-
-.center-block {
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-.pull-right {
-    float: right !important;
-}
-
-.pull-left {
-    float: left !important;
-}
-
-.hide {
-    display: none !important;
-}
-
-.show {
-    display: block !important;
-}
-
-.invisible {
-    visibility: hidden;
-}
-
-.text-hide {
-    font: 0/0 a;
-    color: transparent;
-    text-shadow: none;
-    background-color: transparent;
-    border: 0;
-}
-
-.affix {
-    position: fixed;
-}
-
 /* Forms
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
 input[type="email"], input[type="number"], input[type="search"], input[type="text"], input[type="tel"],
 input[type="url"], input[type="password"], textarea, select {
     height: 38px;
@@ -769,9 +721,9 @@ label > .label-body {
     font-weight: normal;
 }
 
-
 /* Lists
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
 ul {
     list-style: circle inside; }
 
@@ -792,9 +744,9 @@ ol ul {
 li {
     margin-bottom: 1rem; }
 
-
 /* Tables
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
 th, td {
     padding: 12px 15px;
     text-align: left;
@@ -811,9 +763,9 @@ td:last-child {
     padding-right: 0;
 }
 
-
 /* Spacing
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
 button, .button {
     margin-bottom: 1rem;
 }
@@ -826,63 +778,53 @@ pre, blockquote, dl, figure, table, p, ul, ol, form {
     margin-bottom: 2.5rem;
 }
 
-
 /* Utilities
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-.u-full-width {
-    width: 100%;
-    box-sizing: border-box;
+
+.u-full-width { width: 100%; box-sizing: border-box; }
+
+.u-max-full-width { max-width: 100%; box-sizing: border-box; }
+
+.legend { border-bottom: 1px solid #555555; }
+
+.hidden { display: none !important; }
+
+.group { display: flow-root; }
+
+.info { display: block; }
+
+.last { margin-bottom: 2rem; }
+
+.subform { display: flex; flex-wrap: wrap; }
+
+.form-group { margin-right: 1rem; }
+
+.remove { margin: auto 0 auto 0; }
+
+.center-block { display: block; margin-right: auto; margin-left: auto; }
+
+.pull-right { float: right !important; }
+
+.pull-left { float: left !important; }
+
+.hide { display: none !important; }
+
+.show { display: block !important; }
+
+.invisible { visibility: hidden; }
+
+.text-hide {
+    font: 0/0 a;
+    color: transparent;
+    text-shadow: none;
+    background-color: transparent;
+    border: 0;
 }
 
-.u-max-full-width {
-    max-width: 100%;
-    box-sizing: border-box;
-}
-
-.u-pull-right {
-    float: right;
-}
-
-.u-pull-left {
-    float: left;
-}
-
-.legend {
-    border-bottom: 1px solid #555555;
-}
-
-.hidden {
-    display: none !important;
-}
-
-.group {
-    display: flow-root;
-}
-
-.info {
-    display: block;
-}
-
-.last {
-    margin-bottom: 2rem;
-}
-
-.subform {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.form-group {
-    margin-right: 1rem;
-}
-
-.remove {
-    margin: auto 0 auto 0;
-}
+.affix { position: fixed; }
 
 /* Misc
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-
 hr {
     margin-top: 3rem;
     margin-bottom: 3.5rem;
@@ -964,11 +906,6 @@ a.article-title:hover {
     left: 0;
 }
 
-.container {
-    max-width: 800px;
-}
-
-
 /* Clearing
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
@@ -981,6 +918,15 @@ a.article-title:hover {
     clear: both;
 }
 
+.clearfix:before,
+.clearfix:after {
+    display: table;
+    content: " ";
+}
+
+.clearfix:after {
+    clear: both;
+}
 
 /* Pagination
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -1140,7 +1086,6 @@ a.article-title:hover {
     background-color: #ffffff;
 }
 
-
 /* Alerts
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
@@ -1195,7 +1140,6 @@ near the relevant code. For example, if you wanted to change the styles for butt
 on small devices, paste the mobile query code up in the buttons section and style it
 there.
 */
-
 
 /* Larger than mobile */
 @media (min-width: 400px) {

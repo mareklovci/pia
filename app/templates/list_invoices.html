@@ -5,14 +5,14 @@
     <h1>List of Invoices</h1>
 
     <div class="last">
-        <a class="btn btn-primary" href="{{ url_for('invoices.create_invoice') }}">Create New Invoice</a>
+        <a class="btn btn-primary" href="{{ url_for('invoices.create_invoice') }}">New Invoice</a>
     </div>
 
     <div class="last">
-        <form action="https://example.com">
+        <form action="{{ url_for('invoices.list_invoices') }}">
             <label>
                 Day From:
-                <input type="date" name="bday">
+                <input type="date" name="day_from">
             </label>
 
             <p>
