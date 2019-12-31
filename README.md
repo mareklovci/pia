@@ -18,8 +18,6 @@ Administrator and 2 users from each role
 | Admin001 | 1234     | administrator |
 | User0001 | 0001     | accountant    |
 | User0002 | 0002     | accountant    |
-| User0003 | 0003     | secretary     |
-| User0004 | 0004     | secretary     |
 
 ## Invoices
 

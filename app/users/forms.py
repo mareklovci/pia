@@ -40,8 +40,7 @@ class RegistrationForm(FlaskForm):
     ])
 
     role = SelectField('Role', choices=[(Roles.ADMIN.value, 'Admin'),
-                                        (Roles.ACCOUNTANT.value, 'Accountant'),
-                                        (Roles.SECRETARY.value, 'Secretary')])
+                                        (Roles.ACCOUNTANT.value, 'Accountant')])
     submit = SubmitField('Create User')
 
     # noinspection PyMethodMayBeStatic

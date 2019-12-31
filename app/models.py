@@ -12,7 +12,6 @@ class Roles(Enum):
     GUEST = 'guest'
     ADMIN = 'administrator'
     ACCOUNTANT = 'accountant'
-    SECRETARY = 'secretary'
 
 
 @login_manager.user_loader
