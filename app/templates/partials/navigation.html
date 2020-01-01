@@ -9,7 +9,7 @@
 
                 {% if current_user.is_authenticated %}
                     <li class="navbar-item">
-                        <a class="navbar-link" href="{{ url_for('invoices.list_invoices') }}">Invoices</a>
+                        <a class="navbar-link" href="{{ url_for('invoices.search_invoices') }}">Invoices</a>
                     </li>
                     <li class="navbar-item">
                         <a class="navbar-link" href="{{ url_for('users.list_users') }}">Users</a>

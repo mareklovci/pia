@@ -6,12 +6,26 @@ from flask_login import UserMixin
 from itsdangerous import SignatureExpired, TimedJSONWebSignatureSerializer as Serializer
 
 from app import db, login_manager
+from app.utils import get_count
 
 
 class Roles(Enum):
     GUEST = 'guest'
     ADMIN = 'administrator'
     ACCOUNTANT = 'accountant'
+
+
+class Payment(Enum):
+    Cash = 1, 'Cash'
+    CashOnDelivery = 2, 'Cash on Delivery'
+    CreditCard = 3, 'Credit Card'
+    BankTransfer = 4, 'Bank Transfer'
+
+
+class InvoiceType(Enum):
+    All = 1, 'All'
+    Inbound = 2, 'Inbound'
+    Outbound = 3, 'Outbound'
 
 
 @login_manager.user_loader
@@ -82,14 +96,33 @@ class Invoice(db.Model):
     date_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)  # datum vystaveni
     issue_date = db.Column(db.DateTime())  # datum zdanitelneho plneni
     due_date = db.Column(db.DateTime())  # splatnost
-    payment_form = db.Column(db.String(256))  # forma uhrady
+    payment_form = db.Column(db.Integer())  # forma uhrady
+    type = db.Column(db.Integer())
 
-    serial_number = db.Column(db.Integer(), db.Sequence('invoice_serial_number_seq'))
+    serial_number = db.Column(db.String(256))
     total_sum = db.Column(db.Integer())
 
+    # Foreign keys
+    company_id = db.Column(db.Integer, db.ForeignKey('company.id'))
+    buyer_id = db.Column(db.Integer, db.ForeignKey('contact.id'))
+
     # Relationships
-    company = db.Column(db.Integer, db.ForeignKey('company.id'))
     items = db.relationship('Item', backref='item_invoice', lazy='dynamic', collection_class=list)
+
+    def create_serial_number(self):
+        invoice_type = self.get_type()
+        serial_number = ''  # initialize serial number
+        q = Invoice.query.filter(Invoice.type == self.type)
+        if invoice_type == InvoiceType.Outbound:
+            serial_number = f'IO{get_count(q):05d}'
+        if invoice_type == InvoiceType.Inbound:
+            serial_number = f'II{get_count(q):05d}'
+        # assign serial number to attribute
+        self.serial_number = serial_number
+
+    def get_type(self) -> InvoiceType:
+        identifier = [item.value for item in InvoiceType if item.value[0] == self.type][0]
+        return InvoiceType(identifier)
 
 
 class Item(db.Model):
@@ -98,15 +131,15 @@ class Item(db.Model):
     # Fields
     count = db.Column(db.Float())
     unit = db.Column(db.String(50))
-    desc = db.Column(db.String(255))
+    desc = db.Column(db.String(256))
     vat = db.Column(db.Integer())  # % DPH (Value-added tax)
     price = db.Column(db.Float())
 
     # Calculated fields
     total_price = db.Column(db.Float())
 
-    # Relationships
-    invoice = db.Column(db.Integer, db.ForeignKey('invoice.id'))
+    # Foreign keys
+    invoice_id = db.Column(db.Integer, db.ForeignKey('invoice.id'))
 
 
 class Company(db.Model):
@@ -133,6 +166,9 @@ class Contact(db.Model):
 
     # Foreign keys
     company_id = db.Column(db.Integer, db.ForeignKey('company.id'))
+
+    # Relationships
+    invoices = db.relationship('Invoice', backref='invoice_buyer', lazy=True)
 
 
 class Post(db.Model):

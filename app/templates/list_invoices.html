@@ -1,25 +1,10 @@
 {% extends 'blocks/base.html' %}
 
+{% from "macros/macros.html" import render_field %}
+
 {% block content %}
 
-    <h1>List of Invoices</h1>
-
-    <div class="last">
-        <a class="btn btn-primary" href="{{ url_for('invoices.create_invoice') }}">New Invoice</a>
-    </div>
-
-    <div class="last">
-        <form action="{{ url_for('invoices.list_invoices') }}">
-            <label>
-                Day From:
-                <input type="date" name="day_from">
-            </label>
-
-            <p>
-                <button>Submit</button>
-            </p>
-        </form>
-    </div>
+    <h1>Invoices</h1>
 
     {% for invoice in invoices %}
         {% include 'partials/invoice_overview.html' %}

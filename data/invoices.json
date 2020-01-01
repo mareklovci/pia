@@ -1,0 +1,514 @@
+[
+  {
+    "issue_date": "2020-07-21",
+    "due_date": "2020-02-22",
+    "payment_form": 2,
+    "type": 3,
+    "company_id": 1,
+    "buyer_id": 16,
+    "items": [
+      {
+        "count": 48,
+        "unit": "l",
+        "desc": "magna at nunc commodo placerat praesent blandit nam nulla integer pede justo lacinia eget tincidunt eget tempus vel",
+        "vat": 97,
+        "price": 2377.158,
+        "total_price": 114103.584
+      },
+      {
+        "count": 92,
+        "unit": "kg",
+        "desc": "donec dapibus duis at velit eu est congue elementum in",
+        "vat": 20,
+        "price": 1477.659,
+        "total_price": 135944.628
+      },
+      {
+        "count": 190,
+        "unit": "kg",
+        "desc": "cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus vivamus vestibulum sagittis sapien",
+        "vat": 8,
+        "price": 1089.566,
+        "total_price": 207017.54
+      }
+    ]
+  },
+  {
+    "issue_date": "2020-02-14",
+    "due_date": "2020-06-20",
+    "payment_form": 3,
+    "type": 2,
+    "company_id": 1,
+    "buyer_id": 6,
+    "items": [
+      {
+        "count": 113,
+        "unit": "l",
+        "desc": "sed justo pellentesque viverra pede ac diam cras pellentesque volutpat dui maecenas tristique est et tempus semper est quam pharetra",
+        "vat": 95,
+        "price": 2742.951,
+        "total_price": 309953.463
+      },
+      {
+        "count": 167,
+        "unit": "kg",
+        "desc": "sit amet consectetuer adipiscing elit proin risus praesent lectus vestibulum quam sapien varius",
+        "vat": 47,
+        "price": 2706.9,
+        "total_price": 452052.3
+      },
+      {
+        "count": 29,
+        "unit": "mg",
+        "desc": "praesent lectus vestibulum quam sapien varius ut blandit non interdum in ante",
+        "vat": 63,
+        "price": 4535.636,
+        "total_price": 131533.444
+      },
+      {
+        "count": 20,
+        "unit": "l",
+        "desc": "quis orci eget orci vehicula condimentum curabitur in libero ut massa volutpat convallis morbi odio odio elementum eu interdum eu",
+        "vat": 27,
+        "price": 2784.877,
+        "total_price": 55697.54
+      },
+      {
+        "count": 150,
+        "unit": "kg",
+        "desc": "hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt",
+        "vat": 33,
+        "price": 2254.61,
+        "total_price": 338191.5
+      }
+    ]
+  },
+  {
+    "issue_date": "2020-07-29",
+    "due_date": "2020-11-17",
+    "payment_form": 3,
+    "type": 2,
+    "company_id": 1,
+    "buyer_id": 5,
+    "items": [
+      {
+        "count": 44,
+        "unit": "l",
+        "desc": "curabitur gravida nisi at nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum",
+        "vat": 50,
+        "price": 1166.197,
+        "total_price": 51312.668
+      },
+      {
+        "count": 7,
+        "unit": "kg",
+        "desc": "maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi",
+        "vat": 23,
+        "price": 1556.422,
+        "total_price": 10894.954
+      }
+    ]
+  },
+  {
+    "issue_date": "2020-11-22",
+    "due_date": "2020-07-09",
+    "payment_form": 1,
+    "type": 2,
+    "company_id": 1,
+    "buyer_id": 4,
+    "items": [
+      {
+        "count": 37,
+        "unit": "l",
+        "desc": "curae duis faucibus accumsan odio curabitur convallis duis consequat dui nec nisi volutpat eleifend donec",
+        "vat": 93,
+        "price": 4465.367,
+        "total_price": 165218.579
+      },
+      {
+        "count": 160,
+        "unit": "l",
+        "desc": "turpis a pede posuere nonummy integer non velit donec diam neque vestibulum",
+        "vat": 56,
+        "price": 2421.96,
+        "total_price": 387513.6
+      },
+      {
+        "count": 37,
+        "unit": "l",
+        "desc": "nisi vulputate nonummy maecenas tincidunt lacus at velit vivamus vel nulla eget eros elementum pellentesque quisque porta volutpat erat",
+        "vat": 59,
+        "price": 3377.818,
+        "total_price": 124979.266
+      },
+      {
+        "count": 89,
+        "unit": "l",
+        "desc": "ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae mauris viverra diam vitae",
+        "vat": 98,
+        "price": 1298.425,
+        "total_price": 115559.825
+      },
+      {
+        "count": 50,
+        "unit": "l",
+        "desc": "condimentum curabitur in libero ut massa volutpat convallis morbi odio",
+        "vat": 62,
+        "price": 2914.221,
+        "total_price": 145711.05
+      },
+      {
+        "count": 160,
+        "unit": "kg",
+        "desc": "imperdiet et commodo vulputate justo in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum",
+        "vat": 75,
+        "price": 3289.576,
+        "total_price": 526332.16
+      },
+      {
+        "count": 121,
+        "unit": "g",
+        "desc": "primis in faucibus orci luctus et ultrices posuere cubilia curae mauris viverra diam vitae",
+        "vat": 15,
+        "price": 2070.51,
+        "total_price": 250531.71
+      }
+    ]
+  },
+  {
+    "issue_date": "2020-05-05",
+    "due_date": "2020-12-01",
+    "payment_form": 2,
+    "type": 3,
+    "company_id": 1,
+    "buyer_id": 5,
+    "items": [
+      {
+        "count": 44,
+        "unit": "kg",
+        "desc": "at turpis a pede posuere nonummy integer non velit donec diam neque vestibulum",
+        "vat": 34,
+        "price": 2241.572,
+        "total_price": 98629.168
+      },
+      {
+        "count": 129,
+        "unit": "g",
+        "desc": "augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt ante vel ipsum praesent blandit lacinia erat vestibulum sed",
+        "vat": 93,
+        "price": 2282.556,
+        "total_price": 294449.724
+      },
+      {
+        "count": 13,
+        "unit": "kg",
+        "desc": "orci pede venenatis non sodales sed tincidunt eu felis fusce posuere felis sed lacus morbi sem",
+        "vat": 55,
+        "price": 1502.247,
+        "total_price": 19529.211
+      }
+    ]
+  },
+  {
+    "issue_date": "2020-03-29",
+    "due_date": "2020-01-29",
+    "payment_form": 4,
+    "type": 2,
+    "company_id": 1,
+    "buyer_id": 20,
+    "items": [
+      {
+        "count": 5,
+        "unit": "l",
+        "desc": "elementum ligula vehicula consequat morbi a ipsum integer a nibh in quis justo maecenas",
+        "vat": 7,
+        "price": 2506.912,
+        "total_price": 12534.56
+      },
+      {
+        "count": 118,
+        "unit": "mg",
+        "desc": "sollicitudin mi sit amet lobortis sapien sapien non mi integer ac neque duis bibendum",
+        "vat": 54,
+        "price": 343.607,
+        "total_price": 40545.626
+      },
+      {
+        "count": 151,
+        "unit": "kg",
+        "desc": "ut erat id mauris vulputate elementum nullam varius nulla facilisi cras non",
+        "vat": 43,
+        "price": 1719.263,
+        "total_price": 259608.713
+      },
+      {
+        "count": 186,
+        "unit": "mg",
+        "desc": "adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus id sapien in sapien iaculis congue vivamus",
+        "vat": 92,
+        "price": 743.71,
+        "total_price": 138330.06
+      },
+      {
+        "count": 174,
+        "unit": "l",
+        "desc": "ac tellus semper interdum mauris ullamcorper purus sit amet nulla quisque arcu libero rutrum ac lobortis vel dapibus at diam",
+        "vat": 35,
+        "price": 3300.001,
+        "total_price": 574200.174
+      },
+      {
+        "count": 85,
+        "unit": "l",
+        "desc": "eu felis fusce posuere felis sed lacus morbi sem mauris laoreet ut rhoncus aliquet pulvinar",
+        "vat": 9,
+        "price": 887.424,
+        "total_price": 75431.04
+      },
+      {
+        "count": 26,
+        "unit": "kg",
+        "desc": "accumsan odio curabitur convallis duis consequat dui nec nisi volutpat eleifend donec ut",
+        "vat": 61,
+        "price": 440.647,
+        "total_price": 11456.822
+      }
+    ]
+  },
+  {
+    "issue_date": "2020-08-09",
+    "due_date": "2020-03-27",
+    "payment_form": 3,
+    "type": 2,
+    "company_id": 1,
+    "buyer_id": 20,
+    "items": [
+      {
+        "count": 45,
+        "unit": "mg",
+        "desc": "arcu adipiscing molestie hendrerit at vulputate vitae nisl aenean lectus",
+        "vat": 82,
+        "price": 3834.837,
+        "total_price": 172567.665
+      },
+      {
+        "count": 192,
+        "unit": "g",
+        "desc": "non mi integer ac neque duis bibendum morbi non quam nec dui luctus rutrum nulla tellus in sagittis dui",
+        "vat": 61,
+        "price": 3467.375,
+        "total_price": 665736.0
+      },
+      {
+        "count": 181,
+        "unit": "l",
+        "desc": "leo odio porttitor id consequat in consequat ut nulla sed accumsan felis ut at dolor",
+        "vat": 2,
+        "price": 1555.959,
+        "total_price": 281628.579
+      },
+      {
+        "count": 54,
+        "unit": "l",
+        "desc": "nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt",
+        "vat": 9,
+        "price": 122.208,
+        "total_price": 6599.232
+      },
+      {
+        "count": 191,
+        "unit": "l",
+        "desc": "consequat lectus in est risus auctor sed tristique in tempus sit amet sem fusce consequat nulla nisl",
+        "vat": 24,
+        "price": 1583.468,
+        "total_price": 302442.388
+      }
+    ]
+  },
+  {
+    "issue_date": "2020-05-25",
+    "due_date": "2020-07-08",
+    "payment_form": 2,
+    "type": 3,
+    "company_id": 1,
+    "buyer_id": 7,
+    "items": [
+      {
+        "count": 7,
+        "unit": "kg",
+        "desc": "massa tempor convallis nulla neque libero convallis eget eleifend luctus ultricies eu nibh quisque id",
+        "vat": 97,
+        "price": 2231.058,
+        "total_price": 15617.406
+      },
+      {
+        "count": 136,
+        "unit": "l",
+        "desc": "pede ullamcorper augue a suscipit nulla elit ac nulla sed",
+        "vat": 91,
+        "price": 4183.464,
+        "total_price": 568951.104
+      },
+      {
+        "count": 23,
+        "unit": "l",
+        "desc": "et ultrices posuere cubilia curae duis faucibus accumsan odio curabitur",
+        "vat": 21,
+        "price": 3320.47,
+        "total_price": 76370.81
+      }
+    ]
+  },
+  {
+    "issue_date": "2020-11-19",
+    "due_date": "2020-01-11",
+    "payment_form": 4,
+    "type": 3,
+    "company_id": 1,
+    "buyer_id": 13,
+    "items": [
+      {
+        "count": 29,
+        "unit": "g",
+        "desc": "ante vel ipsum praesent blandit lacinia erat vestibulum sed magna at",
+        "vat": 64,
+        "price": 925.933,
+        "total_price": 26852.057
+      },
+      {
+        "count": 53,
+        "unit": "l",
+        "desc": "adipiscing lorem vitae mattis nibh ligula nec sem duis aliquam convallis nunc proin at turpis a pede posuere nonummy",
+        "vat": 84,
+        "price": 900.948,
+        "total_price": 47750.244
+      },
+      {
+        "count": 85,
+        "unit": "l",
+        "desc": "orci eget orci vehicula condimentum curabitur in libero ut massa volutpat convallis morbi odio odio elementum eu",
+        "vat": 33,
+        "price": 1732.434,
+        "total_price": 147256.89
+      }
+    ]
+  },
+  {
+    "issue_date": "2020-03-26",
+    "due_date": "2020-07-27",
+    "payment_form": 4,
+    "type": 2,
+    "company_id": 1,
+    "buyer_id": 10,
+    "items": [
+      {
+        "count": 139,
+        "unit": "l",
+        "desc": "ipsum dolor sit amet consectetuer adipiscing elit proin risus praesent lectus vestibulum quam sapien varius ut blandit",
+        "vat": 22,
+        "price": 373.58,
+        "total_price": 51927.62
+      },
+      {
+        "count": 24,
+        "unit": "mg",
+        "desc": "platea dictumst etiam faucibus cursus urna ut tellus nulla ut erat id",
+        "vat": 51,
+        "price": 4664.987,
+        "total_price": 111959.688
+      },
+      {
+        "count": 45,
+        "unit": "l",
+        "desc": "morbi vestibulum velit id pretium iaculis diam erat fermentum justo nec condimentum neque sapien placerat ante nulla justo aliquam",
+        "vat": 32,
+        "price": 3194.118,
+        "total_price": 143735.31
+      },
+      {
+        "count": 93,
+        "unit": "kg",
+        "desc": "tristique in tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis",
+        "vat": 87,
+        "price": 2676.943,
+        "total_price": 248955.699
+      },
+      {
+        "count": 14,
+        "unit": "kg",
+        "desc": "et magnis dis parturient montes nascetur ridiculus mus etiam vel augue vestibulum rutrum rutrum",
+        "vat": 2,
+        "price": 1776.469,
+        "total_price": 24870.566
+      }
+    ]
+  },
+  {
+    "issue_date": "2020-07-14",
+    "due_date": "2020-05-29",
+    "payment_form": 1,
+    "type": 2,
+    "company_id": 1,
+    "buyer_id": 13,
+    "items": [
+      {
+        "count": 78,
+        "unit": "kg",
+        "desc": "tristique in tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis enim",
+        "vat": 8,
+        "price": 3102.036,
+        "total_price": 241958.808
+      }
+    ]
+  },
+  {
+    "issue_date": "2020-08-15",
+    "due_date": "2020-11-29",
+    "payment_form": 2,
+    "type": 2,
+    "company_id": 1,
+    "buyer_id": 17,
+    "items": [
+      {
+        "count": 37,
+        "unit": "kg",
+        "desc": "morbi vel lectus in quam fringilla rhoncus mauris enim leo rhoncus sed",
+        "vat": 72,
+        "price": 3858.978,
+        "total_price": 142782.186
+      },
+      {
+        "count": 45,
+        "unit": "m",
+        "desc": "in faucibus orci luctus et ultrices posuere cubilia curae mauris viverra diam vitae quam suspendisse potenti nullam porttitor lacus at",
+        "vat": 39,
+        "price": 2874.962,
+        "total_price": 129373.29
+      },
+      {
+        "count": 123,
+        "unit": "l",
+        "desc": "faucibus orci luctus et ultrices posuere cubilia curae duis faucibus accumsan odio",
+        "vat": 24,
+        "price": 716.089,
+        "total_price": 88078.947
+      },
+      {
+        "count": 113,
+        "unit": "g",
+        "desc": "consequat in consequat ut nulla sed accumsan felis ut at",
+        "vat": 16,
+        "price": 4518.297,
+        "total_price": 510567.561
+      },
+      {
+        "count": 199,
+        "unit": "l",
+        "desc": "id turpis integer aliquet massa id lobortis convallis tortor risus dapibus",
+        "vat": 36,
+        "price": 2993.753,
+        "total_price": 595756.847
+      }
+    ]
+  }
+]

@@ -3,7 +3,7 @@
 {% block content %}
     <article class="media content-section">
         <div class="media-body">
-            <h2 class="article-title">Invoice {{ invoice.id }}</h2>
+            <h2 class="article-title">{{ invoice.serial_number }}</h2>
 
             <div class="group">
                 <span class="info">
@@ -16,16 +16,49 @@
                     <b>Due Date:</b> {{ invoice.due_date }}
                 </span>
                 <span class="info">
-                    <b>Payment:</b> {{ invoice.payment_form }}
+                    <b>Payment:</b> {{ invoice.payment_form | payment_converter }}
                 </span>
                 <span class="info last">
-                    <b>Serial Number:</b> {{ invoice.serial_number }}
+                    <b>Type:</b> {{ invoice.type | type_converter }}
                 </span>
             </div>
 
             <h3>Seller</h3>
 
+            <div class="group">
+                <span class="info">
+                    <b>Name:</b> {{ invoice.invoice_company.name }}
+                </span>
+                <span class="info">
+                    <b>DIČ:</b> {{ invoice.invoice_company.dic }}
+                </span>
+                <span class="info last">
+                    <b>Residence:</b> {{ invoice.invoice_company.residence }}
+                </span>
+            </div>
+
             <h3>Buyer</h3>
+
+            <div class="group">
+                <span class="info">
+                    <b>Name:</b> {{ invoice.invoice_buyer.name }}
+                </span>
+                <span class="info">
+                    <b>Residence:</b> {{ invoice.invoice_buyer.residence }}
+                </span>
+                <span class="info">
+                    <b>IČ:</b> {{ invoice.invoice_buyer.ic }}
+                </span>
+                <span class="info">
+                    <b>DIČ:</b> {{ invoice.invoice_buyer.dic }}
+                </span>
+                <span class="info">
+                    <b>Phone:</b> {{ invoice.invoice_buyer.phone }}
+                </span>
+                <span class="info last">
+                    <b>E-mail:</b> {{ invoice.invoice_buyer.email }}
+                </span>
+            </div>
 
             <h3>Invoice Items</h3>
 
@@ -57,7 +90,7 @@
             </table>
 
             <div class="group">
-                <span class="pull-right">
+                <span class="pull-right last">
                     <b>Total Price with VAT: {{ "{0:0,.2f}".format(invoice.total_sum) }} $</b>
                 </span>
             </div>

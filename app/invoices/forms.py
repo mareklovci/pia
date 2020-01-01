@@ -1,7 +1,18 @@
-from wtforms import FieldList, Form, FormField, IntegerField, SelectField, StringField, SubmitField, FloatField
+from flask_wtf import FlaskForm
+from wtforms import FieldList, FloatField, Form, FormField, IntegerField, SelectField, StringField, SubmitField
+from wtforms.ext.sqlalchemy.fields import QuerySelectField
 from wtforms.fields.html5 import DateField
 from wtforms.validators import DataRequired
-from flask_wtf import FlaskForm
+
+from app.models import Contact, InvoiceType, Payment
+
+
+class FilterForm(FlaskForm):
+    """Invoices filter form"""
+    date_from = DateField('Date From')
+    date_till = DateField('Date Till')
+    invoice_type = SelectField('Invoice Type', choices=[item.value for item in InvoiceType])
+    submit = SubmitField('Filter View', )
 
 
 class ItemForm(Form):
@@ -27,10 +38,10 @@ class InvoiceForm(FlaskForm):
     due_date = DateField('Date of Taxable Supply', validators=[
         DataRequired()
     ])
-    payment_form = SelectField('Form of Payment', choices=[('form1', 'Cash'),
-                                                           ('form2', 'Cash on Delivery'),
-                                                           ('form3', 'Credit Card'),
-                                                           ('form4', 'Bank Transfer')])
+    payment_form = SelectField('Form of Payment', choices=[item.value for item in Payment])
+    type = SelectField('Invoice Type', choices=[InvoiceType.Inbound.value,
+                                                InvoiceType.Outbound.value])
+    buyer = QuerySelectField('Buyer', query_factory=lambda: Contact.query.all(), get_label='name')
     items = FieldList(FormField(ItemForm), min_entries=1)
 
     submit = SubmitField('Create Invoice')
