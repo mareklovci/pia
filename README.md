@@ -1,4 +1,5 @@
 # pia
+
 KIV/PIA
 
 ## Pre-filled data
@@ -25,12 +26,16 @@ secrets.token_hex(16)
 
 Remove Docker images: `docker rm -f $(docker ps -aq)`.
 
+### Spuštění aplikace
+
+Pro spuštění práce pro její otestování by mělo stačit spustit dva následující řádky pro Docker.
+
 ```shell script
 $ docker build -f Dockerfile -t pia-flask:latest .
 $ docker run -p 5000:5000 --rm -e LC_ALL=C.UTF-8 -e LANG=C.UTF-8 -e FLASK_ENV=development -e FLASK_DEBUG=0 -e FLASK_APP=app.py pia-flask
 ```
 
-Endpoint: `http://192.168.99.100:5000/`.
+Endpoint: `http://192.168.99.100:5000/` (v mém případě).
 
 ## Password reset
 
@@ -46,6 +51,7 @@ Jako důkaz, že resetování hesla funguje bude tedy muset pravděpodobně sta�
 ![step-1](imgs/step-1.png "Step 1")
 
 ### Krok 2 - Přihlašovací obrazovka s hláškou o úspěšném zaslání emailu s resetovacím odkazem
+
 ![step-2](imgs/step-2.png "Step 2")
 
 ### Krok 3 - Email s resetovacím odkazem
@@ -69,11 +75,13 @@ Ukázkový jednotkový test je vypracovaný v souboru `tests.py`.
 
 ### Vytvoření
 
-Databázy je možné vytvořit postupným spuštěním skriptů:
+Databázi je možné vytvořit postupným spuštěním skriptů:
 
 1. `scripts/create_db.py`
 2. `scripts/create_users_roles.py`
 3. `scripts/import_to_db.py`
+
+V repozitáři je ale commitnutá již předvyplněná DB SQLite, takže pro kontrolu práce je není třeba spouštět.
 
 ### Schéma
 
