@@ -10,6 +10,8 @@ companies = Blueprint('companies', __name__)
 
 
 @companies.route('/contact', methods=['GET'])
+@login_required
+@roles_required([Roles.ACCOUNTANT.value])
 def list_contacts():
     page = request.args.get('page', default=1, type=int)
     contacts = Contact.query.order_by(Contact.name.asc()).paginate(page=page, per_page=5)
@@ -17,6 +19,8 @@ def list_contacts():
 
 
 @companies.route('/contact/<int:contact_id>', methods=['GET'])
+@login_required
+@roles_required([Roles.ACCOUNTANT.value])
 def contact(contact_id):
     cont = Contact.query.get_or_404(contact_id)
     return render_template('contact.html', contact=cont)

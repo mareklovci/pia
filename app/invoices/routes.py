@@ -13,6 +13,8 @@ invoices = Blueprint('invoices', __name__)
 
 
 @invoices.route('/invoice/create', methods=['GET', 'POST'])
+@login_required
+@roles_required([Roles.ACCOUNTANT.value])
 def create_invoice():
     form = InvoiceForm()
 
@@ -49,6 +51,8 @@ def create_invoice():
 
 
 @invoices.route('/invoice/<int:invoice_id>', methods=['GET'])
+@login_required
+@roles_required([Roles.ACCOUNTANT.value])
 def invoice(invoice_id):
     """Show the details of a invoice"""
     bill = Invoice.query.get_or_404(invoice_id)
@@ -56,6 +60,8 @@ def invoice(invoice_id):
 
 
 @invoices.route('/invoice', methods=['GET', 'POST'])
+@login_required
+@roles_required([Roles.ACCOUNTANT.value])
 def search_invoices():
     search = FilterForm()
     if request.method == 'POST':
@@ -64,6 +70,8 @@ def search_invoices():
 
 
 @invoices.route('/invoice/search', methods=['POST'])
+@login_required
+@roles_required([Roles.ACCOUNTANT.value])
 def list_invoices():
     def _filter(q, it):
         """Filter Query by Invoice Type.
