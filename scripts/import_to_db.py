@@ -53,6 +53,7 @@ def load_invoices(file='../data/invoices.json'):
     for inv in json_array:
         company = Company.query.get(inv['company_id'])
         buyer = Contact.query.get(inv['buyer_id'])
+        user = User.query.get(inv['user_id'])
 
         issue_date = dt.datetime.strptime(inv['issue_date'], '%Y-%m-%d')
         due_date = dt.datetime.strptime(inv['due_date'], '%Y-%m-%d')
@@ -62,7 +63,8 @@ def load_invoices(file='../data/invoices.json'):
                           payment_form=inv['payment_form'],
                           type=inv['type'],
                           invoice_buyer=buyer,
-                          invoice_company=company)
+                          invoice_company=company,
+                          invoice_author=user)
         invoice.create_serial_number()
         db.session.add(invoice)
         load_invoice_items(inv['items'], invoice)

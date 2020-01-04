@@ -18,8 +18,11 @@
                 <span class="info">
                     <b>Payment:</b> {{ invoice.payment_form | payment_converter }}
                 </span>
-                <span class="info last">
+                <span class="info">
                     <b>Type:</b> {{ invoice.type | type_converter }}
+                </span>
+                <span class="info last">
+                    <b>Created by:</b> {{ invoice.invoice_author.name }}
                 </span>
             </div>
 

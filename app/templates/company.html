@@ -34,9 +34,19 @@
 {#                {% endif %}#}
 {#            </div>#}
 
-            <h2 class="article-title">{{ company.name }}</h2>
-            <p class="article-content">{{ company.dic }}</p>
-            <p class="article-content">{{ company.residence }}</p>
+            <h2 class="article-title">Company Credentials</h2>
+
+            <div class="group">
+                <span class="info">
+                    <b>Name:</b> {{ company.name }}
+                </span>
+                <span class="info">
+                    <b>DIČ:</b> {{ company.dic }}
+                </span>
+                <span class="info last">
+                    <b>Residence:</b> {{ company.residence }}
+                </span>
+            </div>
         </div>
     </article>
 {% endblock content %}

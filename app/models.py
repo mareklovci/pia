@@ -57,6 +57,7 @@ class User(db.Model, UserMixin):
 
     # Relationships
     posts = db.relationship('Post', backref='post_author', lazy=True, cascade='delete')
+    invoices = db.relationship('Invoice', backref='invoice_author', lazy=True)
 
     def get_reset_token(self, expires_sec=1800):
         s = Serializer(current_app.config['SECRET_KEY'], expires_sec)
@@ -99,12 +100,14 @@ class Invoice(db.Model):
     payment_form = db.Column(db.Integer())  # forma uhrady
     type = db.Column(db.Integer())
 
+    serial_id = db.Column(db.Integer())
     serial_number = db.Column(db.String(256))
     total_sum = db.Column(db.Integer())
 
     # Foreign keys
     company_id = db.Column(db.Integer, db.ForeignKey('company.id'))
     buyer_id = db.Column(db.Integer, db.ForeignKey('contact.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     # Relationships
     items = db.relationship('Item', backref='item_invoice', lazy='dynamic', collection_class=list)
@@ -112,11 +115,26 @@ class Invoice(db.Model):
     def create_serial_number(self):
         invoice_type = self.get_type()
         serial_number = ''  # initialize serial number
-        q = Invoice.query.filter(Invoice.type == self.type)
+        q = Invoice.query.filter(Invoice.type == self.type).order_by(Invoice.id.desc()).all()
+
+        # retrieve last invoice
+        try:
+            q = q[1]
+        except IndexError:
+            q = None
+
+        # assign serial_id
+        if q is None:
+            self.serial_id = 1
+        else:
+            self.serial_id = q.serial_id + 1
+
+        # create serial_number
         if invoice_type == InvoiceType.Outbound:
-            serial_number = f'IO{get_count(q):05d}'
-        if invoice_type == InvoiceType.Inbound:
-            serial_number = f'II{get_count(q):05d}'
+            serial_number = f'IO{self.serial_id:05d}'
+        elif invoice_type == InvoiceType.Inbound:
+            serial_number = f'II{self.serial_id:05d}'
+
         # assign serial number to attribute
         self.serial_number = serial_number
 
