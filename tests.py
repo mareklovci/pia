@@ -28,7 +28,6 @@ class UsersTestCase(TestCase):
                     password='12345',
                     email='test@a.a')
         db.session.add(user)
-        db.session.commit()
 
         # this works
         self.assertIn(user, db.session)  # assert user in db.session

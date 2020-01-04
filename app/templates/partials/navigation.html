@@ -5,21 +5,25 @@
                 <li class="navbar-item">
                     <a class="navbar-link" href="{{ url_for('main.home') }}">Home</a>
                 </li>
-
+                <li class="navbar-item">
+                    <a class="navbar-link" href="{{ url_for('companies.company') }}">Company</a>
+                </li>
 
                 {% if current_user.is_authenticated %}
-                    <li class="navbar-item">
-                        <a class="navbar-link" href="{{ url_for('invoices.search_invoices') }}">Invoices</a>
-                    </li>
-                    <li class="navbar-item">
-                        <a class="navbar-link" href="{{ url_for('users.list_users') }}">Users</a>
-                    </li>
-                    <li class="navbar-item">
-                        <a class="navbar-link" href="{{ url_for('companies.list_contacts') }}">Contacts</a>
-                    </li>
-                    <li class="navbar-item">
-                        <a class="navbar-link" href="{{ url_for('companies.company') }}">Company</a>
-                    </li>
+
+                    {% if current_user.is_admin() %}
+                        <li class="navbar-item">
+                            <a class="navbar-link" href="{{ url_for('users.list_users') }}">Users</a>
+                        </li>
+                    {% elif not current_user.is_admin() %}
+                        <li class="navbar-item">
+                            <a class="navbar-link" href="{{ url_for('invoices.search_invoices') }}">Invoices</a>
+                        </li>
+                        <li class="navbar-item">
+                            <a class="navbar-link" href="{{ url_for('companies.list_contacts') }}">Contacts</a>
+                        </li>
+                    {% endif %}
+
                     <li class="navbar-item">
                         <a class="navbar-link" href="{{ url_for('users.account') }}">Account</a>
                     </li>
@@ -31,7 +35,6 @@
                         <a class="navbar-link" href="{{ url_for('users.login') }}">Login</a>
                     </li>
                 {% endif %}
-
             </ul>
         </div>
     </nav>

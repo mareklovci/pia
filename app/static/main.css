@@ -4,6 +4,7 @@
 - Base Styles
 - Typography
 - Links
+- Navbar
 - Buttons
 - Forms
 - Lists
@@ -28,13 +29,6 @@
     box-sizing: border-box;
 }
 
-.column,
-.columns {
-    width: 100%;
-    float: left;
-    box-sizing: border-box;
-}
-
 /* For devices larger than 400px */
 @media (min-width: 400px) {
     .container {
@@ -48,46 +42,6 @@
     .container {
         width: 80%;
     }
-
-    .column,
-    .columns {
-        margin-left: 4%;
-    }
-
-    .column:first-child,
-    .columns:first-child {
-        margin-left: 0;
-    }
-
-    .one.column, .one.columns { width: 4.66666666667%; }
-
-    .two.columns { width: 13.3333333333%; }
-
-    .three.columns { width: 22%; }
-
-    .four.columns { width: 30.6666666667%; }
-
-    .five.columns { width: 39.3333333333%; }
-
-    .six.columns { width: 48%; }
-
-    .seven.columns { width: 56.6666666667%; }
-
-    .eight.columns { width: 65.3333333333%; }
-
-    .nine.columns { width: 74.0%; }
-
-    .ten.columns { width: 82.6666666667%; }
-
-    .eleven.columns { width: 91.3333333333%; }
-
-    .twelve.columns { width: 100%; margin-left: 0; }
-
-    .one-third.column { width: 30.6666666667%; }
-
-    .two-thirds.column { width: 65.3333333333%; }
-
-    .one-half.column { width: 48%; }
 }
 
 /* Base Styles
@@ -160,6 +114,40 @@ a {
 
 a:hover {
     color: #0fa0ce;
+}
+
+/* Navbar
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.navbar {
+    display: block;
+    z-index: 99;
+    border-top: 1px solid #eeeeee;
+    border-bottom: 1px solid #eeeeee; }
+
+.navbar > .container {
+    width: 100%; }
+
+.navbar-list {
+    list-style: none;
+    margin-bottom: 0; }
+
+.navbar-item {
+    position: relative;
+    float: left;
+    margin-bottom: 0; }
+
+.navbar-link {
+    font-size: 18px;
+    margin-right: 35px;
+    text-decoration: none;
+    display: block;
+    padding: 2rem 0 2rem 0;
+    color: #222222;
+}
+
+.navbar-link.active {
+    color: #33c3f0;
 }
 
 /* Buttons
@@ -334,126 +322,6 @@ fieldset[disabled] .btn-primary.focus {
     background-color: #ffffff;
 }
 
-.btn-success {
-    color: #ffffff;
-    background-color: #5cb85c;
-    border-color: #4cae4c;
-}
-
-.btn-success:focus,
-.btn-success.focus {
-    color: #ffffff;
-    background-color: #449d44;
-    border-color: #255625;
-}
-
-.btn-success:hover {
-    color: #ffffff;
-    background-color: #449d44;
-    border-color: #398439;
-}
-
-.btn-success:active,
-.btn-success.active,
-.open > .dropdown-toggle.btn-success {
-    color: #ffffff;
-    background-color: #449d44;
-    background-image: none;
-    border-color: #398439;
-}
-
-.btn-success:active:hover,
-.btn-success.active:hover,
-.open > .dropdown-toggle.btn-success:hover,
-.btn-success:active:focus,
-.btn-success.active:focus,
-.open > .dropdown-toggle.btn-success:focus,
-.btn-success:active.focus,
-.btn-success.active.focus,
-.open > .dropdown-toggle.btn-success.focus {
-    color: #ffffff;
-    background-color: #398439;
-    border-color: #255625;
-}
-
-.btn-success.disabled:hover,
-.btn-success[disabled]:hover,
-fieldset[disabled] .btn-success:hover,
-.btn-success.disabled:focus,
-.btn-success[disabled]:focus,
-fieldset[disabled] .btn-success:focus,
-.btn-success.disabled.focus,
-.btn-success[disabled].focus,
-fieldset[disabled] .btn-success.focus {
-    background-color: #5cb85c;
-    border-color: #4cae4c;
-}
-
-.btn-success .badge {
-    color: #5cb85c;
-    background-color: #ffffff;
-}
-
-.btn-info {
-    color: #ffffff;
-    background-color: #5bc0de;
-    border-color: #46b8da;
-}
-
-.btn-info:focus,
-.btn-info.focus {
-    color: #ffffff;
-    background-color: #31b0d5;
-    border-color: #1b6d85;
-}
-
-.btn-info:hover {
-    color: #ffffff;
-    background-color: #31b0d5;
-    border-color: #269abc;
-}
-
-.btn-info:active,
-.btn-info.active,
-.open > .dropdown-toggle.btn-info {
-    color: #ffffff;
-    background-color: #31b0d5;
-    background-image: none;
-    border-color: #269abc;
-}
-
-.btn-info:active:hover,
-.btn-info.active:hover,
-.open > .dropdown-toggle.btn-info:hover,
-.btn-info:active:focus,
-.btn-info.active:focus,
-.open > .dropdown-toggle.btn-info:focus,
-.btn-info:active.focus,
-.btn-info.active.focus,
-.open > .dropdown-toggle.btn-info.focus {
-    color: #ffffff;
-    background-color: #269abc;
-    border-color: #1b6d85;
-}
-
-.btn-info.disabled:hover,
-.btn-info[disabled]:hover,
-fieldset[disabled] .btn-info:hover,
-.btn-info.disabled:focus,
-.btn-info[disabled]:focus,
-fieldset[disabled] .btn-info:focus,
-.btn-info.disabled.focus,
-.btn-info[disabled].focus,
-fieldset[disabled] .btn-info.focus {
-    background-color: #5bc0de;
-    border-color: #46b8da;
-}
-
-.btn-info .badge {
-    color: #5bc0de;
-    background-color: #ffffff;
-}
-
 .btn-warning {
     color: #ffffff;
     background-color: #f0ad4e;
@@ -572,79 +440,6 @@ fieldset[disabled] .btn-danger.focus {
 .btn-danger .badge {
     color: #d9534f;
     background-color: #ffffff;
-}
-
-.btn-link {
-    font-weight: 400;
-    color: #337ab7;
-    border-radius: 0;
-}
-
-.btn-link,
-.btn-link:active,
-.btn-link.active,
-.btn-link[disabled],
-fieldset[disabled] .btn-link {
-    background-color: transparent;
-    box-shadow: none;
-}
-
-.btn-link,
-.btn-link:hover,
-.btn-link:focus,
-.btn-link:active {
-    border-color: transparent;
-}
-
-.btn-link:hover,
-.btn-link:focus {
-    color: #23527c;
-    text-decoration: underline;
-    background-color: transparent;
-}
-
-.btn-link[disabled]:hover,
-fieldset[disabled] .btn-link:hover,
-.btn-link[disabled]:focus,
-fieldset[disabled] .btn-link:focus {
-    color: #777777;
-    text-decoration: none;
-}
-
-.btn-lg {
-    padding: 10px 16px;
-    font-size: 18px;
-    line-height: 1.3333333;
-    border-radius: 6px;
-}
-
-.btn-sm {
-    padding: 5px 10px;
-    font-size: 12px;
-    line-height: 1.5;
-    border-radius: 3px;
-}
-
-.btn-xs {
-    padding: 1px 5px;
-    font-size: 12px;
-    line-height: 1.5;
-    border-radius: 3px;
-}
-
-.btn-block {
-    display: block;
-    width: 100%;
-}
-
-.btn-block + .btn-block {
-    margin-top: 5px;
-}
-
-input[type="submit"].btn-block,
-input[type="reset"].btn-block,
-input[type="button"].btn-block {
-    width: 100%;
 }
 
 /* Forms
@@ -807,6 +602,7 @@ pre, blockquote, dl, figure, table, p, ul, ol, form {
 
 /* Misc
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
 hr {
     margin-top: 3rem;
     margin-bottom: 3.5rem;
@@ -1124,93 +920,10 @@ there.
 
 /* Larger than phablet (also point when grid becomes active) */
 @media (min-width: 550px) {
-    .header {
-        margin-top: 18rem;
-    }
-
-    .value-props {
-        margin-top: 9rem;
-        margin-bottom: 7rem;
-    }
-
-    .value-img {
-        margin-bottom: 1rem;
-    }
-
-    .example-grid .column,
-    .example-grid .columns {
-        margin-bottom: 1.5rem;
-    }
-
-    .docs-section {
-        padding: 6rem 0;
-    }
-
-    .example-send-yourself-copy {
-        float: right;
-        margin-top: 12px;
-    }
-
-    .example-screenshot-wrapper {
-        position: absolute;
-        width: 48%;
-        height: 100%;
-        left: 0;
-        max-height: none;
-    }
 }
 
 /* Larger than tablet */
 @media (min-width: 750px) {
-    /* Navbar */
-    .navbar + .docs-section {
-        border-top-width: 0; }
-
-    .navbar,
-    .navbar-spacer {
-        display: block;
-        z-index: 99;
-        border-top: 1px solid #eeeeee;
-        border-bottom: 1px solid #eeeeee; }
-
-    .navbar-spacer {
-        display: none; }
-
-    .navbar > .container {
-        width: 100%; }
-
-    .navbar-list {
-        list-style: none;
-        margin-bottom: 0; }
-
-    .navbar-item {
-        position: relative;
-        float: left;
-        margin-bottom: 0; }
-
-    .navbar-link {
-        font-size: 18px;
-        margin-right: 35px;
-        text-decoration: none;
-        display: block;
-        padding: 2rem 0 2rem 0;
-        color: #222222;
-    }
-
-    .navbar-link.active {
-        color: #33c3f0; }
-
-    .has-docked-nav .navbar {
-        position: fixed;
-        top: 0;
-        left: 0; }
-
-    .has-docked-nav .navbar-spacer {
-        display: block; }
-
-    /* Re-overiding the width 100% declaration to match size of % based container */
-    .has-docked-nav .navbar > .container {
-        width: 80%; }
 }
 
 /* Larger than desktop */

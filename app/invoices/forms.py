@@ -9,8 +9,8 @@ from app.models import Contact, InvoiceType, Payment
 
 class FilterForm(FlaskForm):
     """Invoices filter form"""
-    date_from = DateField('Date From')
-    date_till = DateField('Date Till')
+    date_from = DateField('Issue Date From')
+    date_till = DateField('Issue Date Till')
     invoice_type = SelectField('Invoice Type', choices=[item.value for item in InvoiceType])
     submit = SubmitField('Filter View', )
 
