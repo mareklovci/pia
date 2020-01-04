@@ -4,6 +4,7 @@ from flask_login import login_required
 from app import db
 from app.models import Company, Contact, Roles
 from app.utils import roles_required
+from companies.forms import ContactForm
 
 companies = Blueprint('companies', __name__)
 
@@ -25,7 +26,21 @@ def contact(contact_id):
 @login_required
 @roles_required([Roles.ACCOUNTANT.value])
 def create_contact():
-    pass
+    form = ContactForm()
+    if form.validate_on_submit():
+        comp = Company.query.get_or_404(1)
+        new_contact = Contact(name=form.name.data,
+                              residence=form.residence.data,
+                              ic=form.ic.data,
+                              dic=form.dic.data,
+                              phone=form.phone.data,
+                              email=form.email.data,
+                              contact_author=comp)
+        db.session.add(new_contact)
+        db.session.commit()
+        flash('Your contact has been created!', 'success')
+        return redirect(url_for('companies.contact', contact_id=new_contact.id))
+    return render_template('create_contact.html', title='Create Contact', form=form)
 
 
 @companies.route('/contact/<int:contact_id>/delete', methods=['POST'])
@@ -43,7 +58,27 @@ def delete_contact(contact_id):
 @login_required
 @roles_required([Roles.ACCOUNTANT.value])
 def update_contact(contact_id):
-    pass
+    current_contact: Contact = Contact.query.get_or_404(contact_id)
+    form = ContactForm()
+    if form.validate_on_submit():
+        current_contact.name = form.name.data
+        current_contact.residence = form.residence.data
+        current_contact.dic = form.dic.data
+        current_contact.ic = form.ic.data
+        current_contact.email = form.email.data
+        current_contact.phone = form.phone.data
+
+        db.session.commit()
+        flash('Your contact has been updated!', 'success')
+        return redirect(url_for('companies.contact', contact_id=current_contact.id))
+    elif request.method == 'GET':
+        form.name.data = current_contact.name
+        form.residence.data = current_contact.residence
+        form.dic.data = current_contact.dic
+        form.ic.data = current_contact.ic
+        form.email.data = current_contact.email
+        form.phone.data = current_contact.phone
+    return render_template('create_contact.html', title='Update Contact', form=form)
 
 
 @companies.route('/company', methods=['GET'])

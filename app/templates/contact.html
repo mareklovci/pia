@@ -7,11 +7,25 @@
             {% include 'partials/contact_ud_view.html' %}
 
             <h2 class="article-title">{{ contact.name }}</h2>
-            <p class="article-content">{{ contact.residence }}</p>
-            <p class="article-content">{{ contact.ic }}</p>
-            <p class="article-content">{{ contact.dic }}</p>
-            <p class="article-content">{{ contact.phone }}</p>
-            <p class="article-content">{{ contact.email }}</p>
+
+            <div class="group">
+                <span class="info">
+                    <b>DIČ:</b> {{ contact.dic }}
+                </span>
+                <span class="info">
+                    <b>IČ:</b> {{ contact.dic }}
+                </span>
+                <span class="info">
+                    <b>Residence:</b> {{ contact.residence }}
+                </span>
+                <span class="info">
+                    <b>Phone:</b> {{ contact.phone }}
+                </span>
+                <span class="info last">
+                    <b>Email:</b> {{ contact.email }}
+                </span>
+            </div>
+
         </div>
     </article>
 {% endblock content %}

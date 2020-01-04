@@ -1,0 +1,32 @@
+{% extends 'blocks/base.html' %}
+
+{% from "macros/macros.html" import render_field %}
+
+{% block content %}
+    <div class="content-section">
+
+        <form id="invoice-form" method="post" action="" role="form">
+            <!-- csrf token -->
+            {{ form.hidden_tag() }}
+
+            <h2>{{ title }}</h2>
+
+            <fieldset class="form-group">
+                {{ render_field(form.name) }}
+                {{ render_field(form.residence) }}
+                {{ render_field(form.ic) }}
+                {{ render_field(form.dic) }}
+                {{ render_field(form.phone) }}
+                {{ render_field(form.email) }}
+            </fieldset>
+
+            <!-- Submit Button -->
+            <div class="form-group">
+                {{ form.submit(class="btn btn-primary") }}
+            </div>
+
+        </form>
+
+    </div>
+
+{% endblock %}
