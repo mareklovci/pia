@@ -68,32 +68,34 @@
 
             <h3>Invoice Items</h3>
 
-            <table class="u-full-width">
-                <thead>
-                <tr>
-                    <th>Count</th>
-                    <th>Unit</th>
-                    <th>Description</th>
-                    <th>VAT %</th>
-                    <th>Price</th>
-                    <th>Total</th>
-                </tr>
-                </thead>
-                <tbody>
-
-                {% for item in invoice.items %}
+            <div class="horizontal-scroll">
+                <table class="full-width">
+                    <thead>
                     <tr>
-                        <td>{{ "{0:0,.1f}".format(item.count) }}</td>
-                        <td>{{ item.unit }}</td>
-                        <td>{{ item.desc }}</td>
-                        <td>{{ item.vat }}</td>
-                        <td>{{ "{0:0,.1f}".format(item.price) }}</td>
-                        <td>{{ "{0:0,.1f}".format(item.total_price) }}</td>
+                        <th>Count</th>
+                        <th>Unit</th>
+                        <th>Description</th>
+                        <th>VAT %</th>
+                        <th>Price</th>
+                        <th>Total</th>
                     </tr>
-                {% endfor %}
+                    </thead>
+                    <tbody>
 
-                </tbody>
-            </table>
+                    {% for item in invoice.items %}
+                        <tr>
+                            <td>{{ "{0:0,.1f}".format(item.count) }}</td>
+                            <td>{{ item.unit }}</td>
+                            <td>{{ item.desc }}</td>
+                            <td>{{ item.vat }}</td>
+                            <td>{{ "{0:0,.1f}".format(item.price) }}</td>
+                            <td>{{ "{0:0,.1f}".format(item.total_price) }}</td>
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
 
             <div class="group">
                 <span class="pull-right last">

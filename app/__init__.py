@@ -46,9 +46,9 @@ def create_app(config_class=Config):
     app.register_blueprint(errors)
 
     # Setup jinja2 filter
-    import filters
-    app.jinja_env.filters['payment_converter'] = filters.payment_converter
-    app.jinja_env.filters['type_converter'] = filters.type_converter
+    from app.filters import payment_converter, type_converter
+    app.jinja_env.filters['payment_converter'] = payment_converter
+    app.jinja_env.filters['type_converter'] = type_converter
 
     # Return application
     return app

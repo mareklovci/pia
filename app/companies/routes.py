@@ -4,7 +4,7 @@ from flask_login import login_required
 from app import db
 from app.models import Company, Contact, Roles
 from app.utils import roles_required
-from companies.forms import ContactForm
+from app.companies.forms import ContactForm
 
 companies = Blueprint('companies', __name__)
 

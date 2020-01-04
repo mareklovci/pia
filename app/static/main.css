@@ -55,12 +55,25 @@ html {
 }
 
 body {
-    margin-top: 10rem;
     font-size: 1.5em;
     line-height: 1.6;
     font-weight: 400;
     color: #222222;
     background: #f1f2f6;
+}
+
+/* Larger than phablet */
+@media (min-width: 550px) {
+    body {
+        margin-top: 14rem;
+    }
+}
+
+/* Larger than tablet */
+@media (min-width: 750px) {
+    body {
+        margin-top: 10rem;
+    }
 }
 
 /* Typography
@@ -122,20 +135,26 @@ a:hover {
 .navbar {
     display: block;
     z-index: 99;
-    border-top: 1px solid #eeeeee;
-    border-bottom: 1px solid #eeeeee; }
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: #ff8600;
+}
 
 .navbar > .container {
-    width: 100%; }
+    width: 80%;
+}
 
 .navbar-list {
     list-style: none;
-    margin-bottom: 0; }
+    margin-bottom: 0;
+}
 
 .navbar-item {
     position: relative;
     float: left;
-    margin-bottom: 0; }
+    margin-bottom: 0;
+}
 
 .navbar-link {
     font-size: 18px;
@@ -146,8 +165,19 @@ a:hover {
     color: #222222;
 }
 
-.navbar-link.active {
-    color: #33c3f0;
+/* Larger than phablet */
+@media (min-width: 550px) {
+    .navbar {
+        position: fixed;
+
+    }
+}
+
+/* Larger than tablet */
+@media (min-width: 750px) {
+    .navbar > .container {
+        width: 100%;
+    }
 }
 
 /* Buttons
@@ -502,24 +532,29 @@ label > .label-body {
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 ul {
-    list-style: circle inside; }
+    list-style: circle inside;
+}
 
 ol {
-    list-style: decimal inside; }
+    list-style: decimal inside;
+}
 
 ol, ul {
     padding-left: 0;
-    margin-top: 0; }
+    margin-top: 0;
+}
 
 ul ul,
 ul ol,
 ol ol,
 ol ul {
     margin: 1.5rem 0 1.5rem 3rem;
-    font-size: 90%; }
+    font-size: 90%;
+}
 
 li {
-    margin-bottom: 1rem; }
+    margin-bottom: 1rem;
+}
 
 /* Tables
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -558,9 +593,9 @@ pre, blockquote, dl, figure, table, p, ul, ol, form {
 /* Utilities
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-.u-full-width { width: 100%; box-sizing: border-box; }
+.full-width { width: 100%; box-sizing: border-box; }
 
-.u-max-full-width { max-width: 100%; box-sizing: border-box; }
+.horizontal-scroll { overflow-x: auto; }
 
 .legend { border-bottom: 1px solid #555555; }
 
@@ -572,7 +607,12 @@ pre, blockquote, dl, figure, table, p, ul, ol, form {
 
 .last { margin-bottom: 2rem; }
 
-.subform { display: flex; flex-wrap: wrap; }
+.subform {
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 1px solid;
+    margin: 1rem 0;
+}
 
 .form-group { margin-right: 1rem; }
 
@@ -608,10 +648,6 @@ hr {
     margin-bottom: 3.5rem;
     border-width: 0;
     border-top: 1px solid #e1e1e1;
-}
-
-.bg-steel {
-    background-color: #ff8600;
 }
 
 .site-header .navbar-nav .nav-link:hover {
@@ -670,13 +706,6 @@ a.article-title:hover {
 
 .account-heading {
     font-size: 2.5rem;
-}
-
-.navbar {
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
 }
 
 /* Clearing
@@ -918,7 +947,7 @@ there.
 @media (min-width: 400px) {
 }
 
-/* Larger than phablet (also point when grid becomes active) */
+/* Larger than phablet */
 @media (min-width: 550px) {
 }
 
