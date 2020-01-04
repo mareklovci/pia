@@ -1,6 +1,9 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash
-from app.models import Contact, Company
+from flask import Blueprint, flash, redirect, render_template, request, url_for
+from flask_login import login_required
+
 from app import db
+from app.models import Company, Contact, Roles
+from app.utils import roles_required
 
 companies = Blueprint('companies', __name__)
 
@@ -18,16 +21,27 @@ def contact(contact_id):
     return render_template('contact.html', contact=cont)
 
 
+@companies.route('/contact/create', methods=['GET', 'POST'])
+@login_required
+@roles_required([Roles.ACCOUNTANT.value])
+def create_contact():
+    pass
+
+
 @companies.route('/contact/<int:contact_id>/delete', methods=['POST'])
+@login_required
+@roles_required([Roles.ACCOUNTANT.value])
 def delete_contact(contact_id):
     cont = Contact.query.get_or_404(contact_id)
     db.session.delete(cont)
     db.session.commit()
-    flash('Your post has been deleted!', 'success')
+    flash('Your contact has been deleted!', 'success')
     return redirect(url_for('companies.list_contacts'))
 
 
 @companies.route('/contact/<int:contact_id>/update', methods=['GET', 'POST'])
+@login_required
+@roles_required([Roles.ACCOUNTANT.value])
 def update_contact(contact_id):
     pass
 

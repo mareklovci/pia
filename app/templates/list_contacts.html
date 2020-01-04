@@ -3,6 +3,13 @@
 {% from "macros/macros.html" import render_pagination %}
 
 {% block content %}
+
+    <h1>Contacts</h1>
+
+    <div class="last">
+        <a class="btn btn-primary" href="{{ url_for('companies.create_contact') }}">New Contact</a>
+    </div>
+
     {% for contact in contacts.items %}
         {% include 'partials/contact_overview.html' %}
     {% endfor %}

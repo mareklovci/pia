@@ -6,7 +6,6 @@ from flask_login import UserMixin
 from itsdangerous import SignatureExpired, TimedJSONWebSignatureSerializer as Serializer
 
 from app import db, login_manager
-from app.utils import get_count
 
 
 class Roles(Enum):
@@ -110,7 +109,7 @@ class Invoice(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     # Relationships
-    items = db.relationship('Item', backref='item_invoice', lazy='dynamic', collection_class=list)
+    items = db.relationship('Item', backref='item_invoice', lazy='dynamic', collection_class=list, cascade='delete')
 
     def create_serial_number(self):
         invoice_type = self.get_type()

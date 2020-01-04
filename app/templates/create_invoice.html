@@ -4,11 +4,15 @@
 
 {% block content %}
     <div class="content-section">
+
+        {# Form Template #}
+        {% include 'partials/form_template.html' %}
+
         <form id="invoice-form" method="post" action="" role="form">
             <!-- csrf token -->
             {{ form.hidden_tag() }}
 
-            <h2>Create New Invoice</h2>
+            <h2>{{ title }}</h2>
 
             <fieldset class="form-group">
                 <!-- Date Created -->
@@ -65,9 +69,6 @@
             </div>
 
         </form>
-
-        {# Form Template #}
-        {% include 'partials/form_template.html' %}
 
     </div>
 

@@ -38,10 +38,10 @@ class InvoiceForm(FlaskForm):
     due_date = DateField('Date of Taxable Supply', validators=[
         DataRequired()
     ])
-    payment_form = SelectField('Form of Payment', choices=[item.value for item in Payment])
-    type = SelectField('Invoice Type', choices=[InvoiceType.Inbound.value,
-                                                InvoiceType.Outbound.value])
+    payment_form = SelectField('Form of Payment', coerce=int, choices=[item.value for item in Payment])
+    type = SelectField('Invoice Type', coerce=int, choices=[InvoiceType.Inbound.value,
+                                                            InvoiceType.Outbound.value])
     buyer = QuerySelectField('Buyer', query_factory=lambda: Contact.query.all(), get_label='name')
-    items = FieldList(FormField(ItemForm), min_entries=1)
+    items = FieldList(FormField(ItemForm))
 
-    submit = SubmitField('Create Invoice')
+    submit = SubmitField('Submit')

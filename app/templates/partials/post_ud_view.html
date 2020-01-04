@@ -1,0 +1,27 @@
+<div class="article-metadata">
+    {% if post.post_author == current_user %}
+        <div>
+            <a class="btn btn-primary" href="{{ url_for('posts.update_post', post_id=post.id) }}">Update</a>
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-danger" id="deleteConfirm"
+                    onclick="deleteConfirmPost()">Delete
+            </button>
+
+            <!-- Modal -->
+            <script>
+                function deleteConfirmPost() {
+                    const form = document.createElement('form');
+                    form.method = "post";
+                    form.action = "{{ url_for('posts.delete_post', post_id=post.id) }}";
+
+                    if (confirm("Delete Post?") === true) {
+                        document.body.appendChild(form);
+                        form.submit();
+                    }
+                }
+            </script>
+
+        </div>
+    {% endif %}
+</div>

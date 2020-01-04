@@ -2,17 +2,17 @@ from flask import Blueprint, abort, flash, redirect, render_template, request, u
 from flask_login import current_user, login_required
 
 from app import db
-from app.utils import roles_required
 from app.models import Post, Roles
 from app.posts.forms import PostForm
+from app.utils import roles_required
 
 posts = Blueprint('posts', __name__)
 
 
-@posts.route('/post/new', methods=['GET', 'POST'])
+@posts.route('/post/create', methods=['GET', 'POST'])
 @login_required
 @roles_required([Roles.ADMIN.value])
-def new_post():
+def create_post():
     form = PostForm()
     if form.validate_on_submit():
         post = Post(title=form.title.data, content=form.content.data, post_author=current_user)

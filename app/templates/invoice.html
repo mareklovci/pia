@@ -3,6 +3,9 @@
 {% block content %}
     <article class="media content-section">
         <div class="media-body">
+
+            {% include 'partials/invoice_ud_view.html' %}
+
             <h2 class="article-title">{{ invoice.serial_number }}</h2>
 
             <div class="group">

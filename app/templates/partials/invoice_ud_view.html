@@ -1,0 +1,24 @@
+<div class="article-metadata">
+    <div>
+        <a class="btn btn-primary" href="{{ url_for('invoices.update_invoice', invoice_id=invoice.id) }}">Update</a>
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-danger" id="deleteConfirm"
+                onclick="deleteConfirmPost()">Delete
+        </button>
+
+        <!-- Modal -->
+        <script>
+            function deleteConfirmPost() {
+                const form = document.createElement('form');
+                form.method = "post";
+                form.action = "{{ url_for('invoices.delete_invoice', invoice_id=invoice.id) }}";
+
+                if (confirm("Delete Invoice?") === true) {
+                    document.body.appendChild(form);
+                    form.submit();
+                }
+            }
+        </script>
+    </div>
+</div>

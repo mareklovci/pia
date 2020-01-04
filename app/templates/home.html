@@ -6,7 +6,7 @@
 
     {% if current_user.is_authenticated %}
         <div class="last">
-            <a class="btn btn-primary" href="{{ url_for('posts.new_post') }}">New Post</a>
+            <a class="btn btn-primary" href="{{ url_for('posts.create_post') }}">New Post</a>
         </div>
     {% endif %}
 
