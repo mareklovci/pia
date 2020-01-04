@@ -64,3 +64,17 @@ Jako důkaz, že resetování hesla funguje bude tedy muset pravděpodobně sta�
 
 Z principu toho, jak je aplikace ve frameworku Flask napsaná není bohužel moc co testovat (nebo mě nenapadá co a jak - alespoň, co se týká user managementu).
 Ukázkový jednotkový test je vypracovaný v souboru `tests.py`.
+
+## Databáze
+
+### Vytvoření
+
+Databázy je možné vytvořit postupným spuštěním skriptů:
+
+1. `scripts/create_db.py`
+2. `scripts/create_users_roles.py`
+3. `scripts/import_to_db.py`
+
+### Schéma
+
+![db-schema](imgs/db.png "DB Schema")
