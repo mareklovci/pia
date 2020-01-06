@@ -44,7 +44,7 @@ Pro zprovoznění resetování hesla musí být nastaveno `app.testing = False` 
 Jakmile je nastaveno `app.testing = False`, tak nefunguje CAPTCHA, protože tu mám pouze v testovacím režimu.
 Sice funguje, ale není napojená na můj Google účet.
 
-Jako důkaz, že resetování hesla funguje bude tedy muset pravděpodobně stačit jen několik screenshotů, které mohu poskytnout.
+Jako důkaz, že resetování hesla funguje, bude tedy muset pravděpodobně stačit jen několik screenshotů, které mohu poskytnout.
 
 ### Krok 1 - zadání emailu pro zaslání resetovacího odkazu
 

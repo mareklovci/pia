@@ -148,7 +148,7 @@ def create_user():
 @login_required
 @roles_required([Roles.ADMIN.value])
 def update_user(user_id):
-    user = User.query.filter_by(id=user_id).first()
+    user = User.query.get_or_404(user_id)
     form = UpdateUserForm()
     form.id.data = user.id  # we need to push user id into the form to validate user uniqueness
     if form.validate_on_submit():
