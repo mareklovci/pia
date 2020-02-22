@@ -86,3 +86,9 @@ V repozitáři je ale commitnutá již předvyplněná DB SQLite, takže pro kon
 ### Schéma
 
 ![db-schema](imgs/db.png "DB Schema")
+
+## Other
+
+### Dynamic fields
+
+https://www.rmedgar.com/blog/dynamic_fields_flask_wtf
